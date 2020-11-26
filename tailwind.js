@@ -7,6 +7,7 @@ module.exports = {
     colors: {
       bodycolor: "#FBECCC",
       textcolor: "#383B20",
+      buttoncolor: "#648F54"
     },
     extend: {
       height: {
@@ -14,6 +15,9 @@ module.exports = {
         "screen/3": "calc(100vh / 3)",
         "screen/4": "calc(100vh / 4)",
         "screen/5": "calc(100vh / 5)",
+      },
+      spacing: {
+        "w30": "30%"
       },
     },
   },
