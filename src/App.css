@@ -6,7 +6,7 @@
 
 body {
   /* background-color: #79859e; */
-  color: white;
+  /* color: white; */
 }
 
 .img-meal {
@@ -46,8 +46,10 @@ body {
   width: 1.3em;
   height: 1.3em;
   stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
+}
+.icon-search {
+  stroke: #FBECCC;
+  fill: #FBECCC;
 }
 
 .custom-shape-divider-top-1606414459 {

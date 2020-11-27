@@ -1,6 +1,6 @@
 import React from "react"
 
-const Meal = ({name, mealSrc, price}) => {
+const Meal = ({name, mealSrc, price, onClick}) => {
   return (
     <div className="content-meal-style w-2/5 lg:w-w30">
       <div className="content-meal flex flex-col justify-between mb-8 relative h-full">
@@ -15,7 +15,7 @@ const Meal = ({name, mealSrc, price}) => {
             <span>${price}</span>
           </div>
           <div className="content-more-view relative z-50 text-buttoncolor font-semibold">
-            <span>View more</span>
+            <span data-id={name} onClick={onClick}>Add to cart</span>
           </div>
         </div>
       </div>

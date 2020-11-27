@@ -7,10 +7,12 @@ module.exports = {
     colors: {
       bodycolor: "#FBECCC",
       textcolor: "#383B20",
-      buttoncolor: "#648F54"
+      buttoncolor: "#648F54",
+      searchcolor: "#648F54"
     },
     extend: {
       height: {
+        "h5": "5vh",
         "screen/2": "50vh",
         "screen/3": "calc(100vh / 3)",
         "screen/4": "calc(100vh / 4)",

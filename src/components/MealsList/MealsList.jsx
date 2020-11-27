@@ -1,7 +1,7 @@
 import React from "react"
 import Meal from "components/Meal/Meal"
 
-const MealsList = ({array}) => {
+const MealsList = ({array, onClick}) => {
   
   return (
     array.map(meal => <Meal 
@@ -9,6 +9,7 @@ const MealsList = ({array}) => {
       name={meal.strMeal} 
       mealSrc={meal.strMealThumb} 
       price={meal.price}
+      onClick={onClick}
     />)
 
   )
