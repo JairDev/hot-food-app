@@ -11,17 +11,32 @@ import {
 import Cart from 'components/Cart/Cart';
 import { useState } from 'react';
 
-function App() {
-  const [cartArr, setCarArr] = useState([])
+function thisItemExist(array, item, id) {
+  // console.log(array, item.strMeal)
+  const findIdx = array.findIndex(item => item.strMeal === id)
+  return findIdx
+}
 
-  const handlePush = (meal) => {
-    const nArr = cartArr.concat([meal])
-    setCarArr(nArr)
+function App() {
+  const [cart, setCart] = useState([])
+
+  const handleCart = (meal, qty, id) => {
+    console.log(meal)
+    const nObj = Object.assign({}, {
+      ...meal,
+      qty,
+    })
+    // console.log(nObj)
+    const item = thisItemExist(cart, nObj, id)
+    const nArr = [...cart].concat([nObj])
+    if(item === -1) {
+      setCart(nArr)
+    }else {
+      console.log("already exist")
+    }
   }
-  console.log(cartArr)
-  // const arr = []
-  // const arr2 = arr.concat(["hola"])
-  // console.log(arr2)
+  console.log(cart)
+
   return (
     <Router>
       <div className="App bg-bodycolor text-textcolor min-h-screen">
@@ -32,10 +47,10 @@ function App() {
         </div>
       <Switch>
         <Route path="/cart">
-          <Cart/>
+          <Cart meals={cart}/>
         </Route>
         <Route path="/">
-          <Home onPush={handlePush}/>
+          <Home onCart={handleCart}/>
         </Route>
       </Switch>
       </div>

@@ -14,7 +14,7 @@ function filterMeals(array, keyword) {
 
 ///////////////////////////////
 
-const FilterableProducts = ({onPush}) => {
+const FilterableProducts = ({onCart}) => {
   const [meals, setMeals] = useState([]);
   const [mealsList, setMealsList] = useState([]);
   const [textSearch, setTextSearch] = useState("");
@@ -51,8 +51,10 @@ const FilterableProducts = ({onPush}) => {
 
   const handleClick = (e) => {
     const id = e.target.dataset.id
+    const qty = parseInt(e.target.dataset.qty)
     const find = meals.find(meal => meal.strMeal === id)
-    onPush(find)
+    onCart(find, qty, id)
+    console.log(id, qty)
   }
 
   return (
@@ -62,7 +64,7 @@ const FilterableProducts = ({onPush}) => {
       </div>
       <FilterPrice />
       <div className="content-meals-menu flex flex-wrap justify-between mt-16">
-        <MealsList array={mealsList} onClick={handleClick} />
+        <MealsList array={mealsList} onClick={handleClick} id={"mealshome"} />
       </div>
     </>
   );

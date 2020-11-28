@@ -71,3 +71,32 @@ body {
 .custom-shape-divider-top-1606414459 .shape-fill {
   fill: #E9AC2E;
 }
+
+.style-cart {
+  /* border: 3px solid red; */
+  border-bottom: 2px solid #E9AC2E;
+  width: 100%;
+  height: 30vh;
+}
+
+.style-cart .content-meal {
+  flex-direction: row;
+}
+.style-cart .content-meal .img-meal img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.style-cart .content-meal .img-meal {
+  height: 100%;
+  /* padding: 1.2rem; */
+}
+
+.style-cart .content-meal .content-price-qty {
+  width: 100%;
+}
+
+.style-cart .content-meal::before, .style-cart .content-meal::after {
+  display: none;
+}

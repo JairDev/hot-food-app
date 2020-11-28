@@ -1,15 +1,17 @@
 import Header from "components/Header/Header"
+import MealsList from "components/MealsList/MealsList"
 import Nav from "components/Nav/Nav"
 import React from "react"
 
 const Cart = ({meals}) => {
   const meal = meals
+  console.log(meal)
   return (
     <>
       <Header/>
-      <div className="content-meals-cart">
+      <div className="content-meals-cart relative z-50 mt-16">
         <div className="meals-cart">
-          
+          <MealsList array={meals} classCart={"style-cart"} id="mealscart"/>
         </div>
         <div className="total-price">
           <span className="total-products-price">$123</span>

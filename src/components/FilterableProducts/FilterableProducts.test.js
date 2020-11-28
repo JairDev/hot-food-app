@@ -5,6 +5,6 @@ import FilterableProducts from "./FilterableProducts"
 describe("", () => {
   it("", () => {
     const {getByText} = render(< FilterableProducts/ >)
-    expect(getByText(/""/i)).toBeInTheDocument()
+    expect(getByText(/"menu"/i)).toBeInTheDocument()
   })
 })
