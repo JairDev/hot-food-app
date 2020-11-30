@@ -1,7 +1,7 @@
 import Price from "components/Price/Price"
 import React from "react"
 
-const MealCart = ({name, mealSrc, price}) => {
+const MealCart = ({name, mealSrc, price, onChange}) => {
   return (
     <div className="content-meal-style w-full h-h30 lg:w-30 style-cart">
     <div className="content-meal flex flex-row justify-between mb-8 relative h-full">
@@ -12,10 +12,13 @@ const MealCart = ({name, mealSrc, price}) => {
         <div className="meal-description mb-4 relative z-40">
           <h3 className="text-lg font-semibold">{name}</h3>
         </div>
+        <div className="content-remove-meal mb-2">
+          <span>Eliminate</span>
+        </div>
         <div className="content-price-qty flex justify-between w-full relative z-50">
           <div className="content-qty">
             <form action="">
-              <select name="" id="">
+              <select name="" id="" onChange={onChange} data-id={name} >
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

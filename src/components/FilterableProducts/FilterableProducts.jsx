@@ -1,8 +1,10 @@
 import FilterPrice from "components/FilterPrice/FilterPrice";
 import MealsList from "components/MealsList/MealsList";
 import SearchBar from "components/SearchBar/SearchBar";
+import useLocalStorage from "hooks/useLocalStorage";
 import React, { useEffect, useState } from "react";
 import getMeals from "services";
+import thisItemExist from "utils/thisItemExist";
 import data from "../../data-price/data-price.json";
 
 function filterMeals(array, keyword) {
@@ -18,8 +20,10 @@ const FilterableProducts = ({onCart}) => {
   const [meals, setMeals] = useState([]);
   const [mealsList, setMealsList] = useState([]);
   const [textSearch, setTextSearch] = useState("");
-  const [textLabel, setTextLabel] = useState("");
-  const arr = []
+  const [storage, setStorage] = useLocalStorage();
+  // const [textLabel, setTextLabel] = useState("");
+
+  // const arr = []
   useEffect(() => {
     getMeals(data).then((res) => setMeals(res.meals));
     setMealsList(meals)
@@ -33,7 +37,7 @@ const FilterableProducts = ({onCart}) => {
   };
 
   const handleSubmit = (e) => {
-    const resultFilter =  filterMeals(meals, textSearch)
+    // const resultFilter =  filterMeals(meals, textSearch)
     // const label = resultFilter.map(meal => {
     //   const regex = new RegExp(textSearch, "gi")
     //   const mealName = meal.strMeal.replace(regex, `<span>${textSearch}</span>`) 
@@ -43,19 +47,37 @@ const FilterableProducts = ({onCart}) => {
     //   return meal
     // })
     // console.log(label)
-    setMealsList(resultFilter)
-    setTextLabel(textSearch)
-    setTextSearch("");
-    e.preventDefault()
+    // setMealsList(resultFilter)
+    // setTextLabel(textSearch)
+    // setTextSearch("");
+    // e.preventDefault()
   };
 
   const handleClick = (e) => {
     const id = e.target.dataset.id
     const qty = parseInt(e.target.dataset.qty)
     const find = meals.find(meal => meal.strMeal === id)
-    onCart(find, qty, id)
-    console.log(id, qty)
+    handleCart(find, qty, id)
+    console.log(e.target)
+    e.preventDefault()
   }
+
+  const handleCart = (meal, qty, id) => {
+    const nObj = Object.assign(
+      {},
+      {
+        ...meal,
+        qty,
+      }
+    );
+    const item = thisItemExist(storage, id);
+    console.log(item);
+    if (item === -1) {
+      setStorage((prev) => [...prev, nObj]);
+    } else {
+      console.log("already exist");
+    }
+  };
 
   return (
     <>

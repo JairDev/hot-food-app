@@ -2,8 +2,8 @@ import React from "react";
 import Meal from "components/Meal/Meal";
 import MealCart from "components/MealCart/MealCart";
 
-const MealsList = ({ array, onClick, classCart, id }) => {
-  console.log(id);
+const MealsList = ({ array, onClick, onChange, classCart, id }) => {
+
   if (id === "mealshome") {
     return array.map((meal) => (
       <Meal
@@ -22,8 +22,10 @@ const MealsList = ({ array, onClick, classCart, id }) => {
         name={meal.strMeal}
         mealSrc={meal.strMealThumb}
         price={meal.price}
+        qty={meal.qty}
         onClick={onClick}
         classCart={classCart}
+        onChange={onChange}
       />
     ));
   }

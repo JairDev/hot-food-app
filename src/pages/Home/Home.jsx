@@ -10,7 +10,7 @@ const Home = ({onCart}) => {
         <div className="content-menu-title flex justify-center my-16 font-semibold relative">
           <h2 className="menu-title text-4xl lg:text-6xl">Tasty Menu</h2>
         </div>
-        <FilterableProducts onCart={onCart}/>
+        <FilterableProducts/>
       </section>
     </>
   );
