@@ -2,7 +2,7 @@ import React from "react";
 import Meal from "components/Meal/Meal";
 import MealCart from "components/MealCart/MealCart";
 
-const MealsList = ({ array, onClick, onChange, classCart, id }) => {
+const MealsList = ({ array, onClick, onChange, classCart, id, onRemove}) => {
 
   if (id === "mealshome") {
     return array.map((meal) => (
@@ -26,6 +26,7 @@ const MealsList = ({ array, onClick, onChange, classCart, id }) => {
         onClick={onClick}
         classCart={classCart}
         onChange={onChange}
+        onRemove={onRemove}
       />
     ));
   }

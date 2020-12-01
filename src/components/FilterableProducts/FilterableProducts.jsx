@@ -16,6 +16,24 @@ function filterMeals(array, keyword) {
 
 ///////////////////////////////
 
+
+const handleCart = (meal, qty, id, storage, setStorage) => {
+  const nObj = Object.assign(
+    {},
+    {
+      ...meal,
+      qty,
+    }
+  );
+  const item = thisItemExist(storage, id);
+  console.log(item);
+  if (item === -1) {
+    setStorage((prev) => [...prev, nObj]);
+  } else {
+    console.log("already exist");
+  }
+};
+
 const FilterableProducts = ({onCart}) => {
   const [meals, setMeals] = useState([]);
   const [mealsList, setMealsList] = useState([]);
@@ -57,27 +75,33 @@ const FilterableProducts = ({onCart}) => {
     const id = e.target.dataset.id
     const qty = parseInt(e.target.dataset.qty)
     const find = meals.find(meal => meal.strMeal === id)
-    handleCart(find, qty, id)
-    console.log(e.target)
+    const parametersObj = {
+      find,
+      qty,
+      id,
+      storage,
+      setStorage
+    }
+    handleCart(find, qty, id, storage, setStorage)
     e.preventDefault()
   }
 
-  const handleCart = (meal, qty, id) => {
-    const nObj = Object.assign(
-      {},
-      {
-        ...meal,
-        qty,
-      }
-    );
-    const item = thisItemExist(storage, id);
-    console.log(item);
-    if (item === -1) {
-      setStorage((prev) => [...prev, nObj]);
-    } else {
-      console.log("already exist");
-    }
-  };
+  // const handleCart = (meal, qty, id) => {
+  //   const nObj = Object.assign(
+  //     {},
+  //     {
+  //       ...meal,
+  //       qty,
+  //     }
+  //   );
+  //   const item = thisItemExist(storage, id);
+  //   console.log(item);
+  //   if (item === -1) {
+  //     setStorage((prev) => [...prev, nObj]);
+  //   } else {
+  //     console.log("already exist");
+  //   }
+  // };
 
   return (
     <>

@@ -2,38 +2,50 @@ import Button from "components/Button/Button";
 import Header from "components/Header/Header";
 import MealsList from "components/MealsList/MealsList";
 import useLocalStorage from "hooks/useLocalStorage";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import thisItemExist from "utils/thisItemExist";
 
 const classCartButton = "bg-buttoncolor w-full p-4 text-lg font-semibold";
 
-const Cart = ({ meals, onCart }) => {
+const Cart = () => {
   const [storage, setStorage] = useLocalStorage();
+  const [subTotal, setSubTotal] = useState(0);
+  const tax = 10;
+
+  useEffect(() => {
+    const map = storage.map(item => item.qty * item.price)
+      .reduce((acc,current) => acc + current)
+    setSubTotal(map);
+    // return () => {
+    //   cleanup
+    // }
+  }, [storage]);
 
   const handleChange = (e) => {
-    const value = parseInt(e.target.value)
-    const find = storage.find(item => item.strMeal === e.target.dataset.id)
-    const filter = storage.filter(item => item.strMeal !== e.target.dataset.id)
-    console.log(filter)
-    const lastQty = find.qty
-    console.log(value, lastQty)
-    if(value !== lastQty) {
-      const nArr = [...storage]
-      const nObj = {...find}
-      
-      nObj.qty = value
-      console.log(nObj);
-      console.log(nArr)
-      console.log("not equal")
-      setStorage([nObj, ...filter])
-    }else {
-      console.log("no")
-    }
+    const id = e.target.dataset.id;
+    const value = parseInt(e.target.value);
+    const newArr = [...storage];
+    const find = newArr.find((item) => item.strMeal === id);
+    const findIndex = thisItemExist(newArr, id);
+    const newObj = { ...find };
+    newObj.qty = value;
+    newArr.splice(findIndex, 1, newObj);
+    setStorage(newArr);
+  };
+
+  const handleRemove = (e) => {
+    const id = e.target.dataset.id
+    const newArr = [...storage]
+    const filter = newArr.filter(item => item.strMeal !== id)
+    setStorage(filter)
+    e.preventDefault()
+
   };
 
   const handleClick = (e) => {
-    console.log("Order");
-    e.preventDefault();
-  };
+    console.log("click")
+    e.preventDefault(e)
+  }
 
   return (
     <>
@@ -48,21 +60,22 @@ const Cart = ({ meals, onCart }) => {
             classCart={"style-cart"}
             id="mealscart"
             onChange={handleChange}
+            onRemove={handleRemove}
           />
         </div>
         <div className="order-done flex p-4">
           <div className="content-make-order w-full">
             <div className="subtotal-price flex justify-between mb-2 font-semibold">
               <span>Sub-total:</span>
-              <span className="ml-4">$452</span>
+              <span className="ml-4">{subTotal}</span>
             </div>
             <div className="tax flex justify-between mb-2 font-semibold">
               <span>Delivery cost:</span>
-              <span className="ml-4">$10</span>
+              <span className="ml-4">${tax}</span>
             </div>
             <span className="total-cart-price flex justify-between mb-6 font-semibold">
               <span>Total:</span>
-              <span className="ml-4">$2342</span>
+              <span className="ml-4">${subTotal + tax}</span>
             </span>
             <Button
               children={"ORDER"}

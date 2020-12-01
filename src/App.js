@@ -1,34 +1,10 @@
 import "./assets/main.css";
 import "./App.css";
-import Header from "./components/Header/Header";
 import Home from "pages/Home/Home";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Cart from "components/Cart/Cart";
-import { useEffect, useState } from "react";
-import useAddToCart from "hooks/useAddToCart";
-import useLocalStorage from "hooks/useLocalStorage";
-import thisItemExist from "utils/thisItemExist";
 
 function App() {
-  // const [storage, setStorage] = useLocalStorage();
-
-  // const handleCart = (meal, qty, id) => {
-  //   const nObj = Object.assign(
-  //     {},
-  //     {
-  //       ...meal,
-  //       qty,
-  //     }
-  //   );
-  //   const item = thisItemExist(storage, id);
-  //   console.log(item);
-  //   if (item === -1) {
-  //     setStorage((prev) => [...prev, nObj]);
-  //   } else {
-  //     console.log("already exist");
-  //   }
-  // };
-
   return (
     <Router>
       <div className="App bg-bodycolor text-textcolor min-h-screen">
