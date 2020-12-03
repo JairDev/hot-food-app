@@ -21,15 +21,19 @@ const Cart = () => {
     // }
   }, [storage]);
 
-  const handleChange = (e) => {
-    const id = e.target.dataset.id;
-    const value = parseInt(e.target.value);
+  const handleChange = (e, itemMeal) => {
+    const id = itemMeal.idMeal;
+    const qty = parseInt(e.target.value);
+    const nObj = Object.assign(
+      {},
+      {
+        ...itemMeal,
+        qty,
+      }
+    );
     const newArr = [...storage];
-    const find = newArr.find((item) => item.strMeal === id);
     const findIndex = thisItemExist(newArr, id);
-    const newObj = { ...find };
-    newObj.qty = value;
-    newArr.splice(findIndex, 1, newObj);
+    newArr.splice(findIndex, 1, nObj);
     setStorage(newArr);
   };
 

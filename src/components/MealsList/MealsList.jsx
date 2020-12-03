@@ -13,6 +13,7 @@ const MealsList = ({ array, onClick, onChange, classCart, id, onRemove}) => {
         price={meal.price}
         onClick={onClick}
         classCart={classCart}
+        itemMeal={meal}
       />
     ));
   } else {
@@ -27,6 +28,8 @@ const MealsList = ({ array, onClick, onChange, classCart, id, onRemove}) => {
         classCart={classCart}
         onChange={onChange}
         onRemove={onRemove}
+        id={meal.idMeal}
+        itemMeal={meal}
       />
     ));
   }

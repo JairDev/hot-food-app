@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 const classMealButton = "text-base font-semibold";
 
-const Meal = ({ name, mealSrc, price, onClick }) => {
+const Meal = ({ name, mealSrc, price, onClick, itemMeal }) => {
   const [qty, setQty] = useState(1);
 
   const handleChange = (e) => {
@@ -32,7 +32,7 @@ const Meal = ({ name, mealSrc, price, onClick }) => {
               className={classMealButton}
               id={name}
               qty={qty}
-              onClick={onClick}
+              onClick={(e) => onClick(e, itemMeal)}
             />
           </div>
         </div>

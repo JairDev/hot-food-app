@@ -2,7 +2,8 @@ import Price from "components/Price/Price"
 import useLocalStorage from "hooks/useLocalStorage";
 import React from "react"
 
-const MealCart = ({name, mealSrc, price, qty, onChange, onRemove}) => {
+const MealCart = ({name, mealSrc, price, qty, onChange, onRemove, id, itemMeal}) => {
+
   return (
     <div className="content-meal-style w-full h-h30 lg:w-30 style-cart">
     <div className="content-meal flex flex-row justify-between mb-8 relative h-full">
@@ -23,7 +24,7 @@ const MealCart = ({name, mealSrc, price, qty, onChange, onRemove}) => {
         <div className="content-price-qty flex justify-between w-full relative z-50">
           <div className="content-qty">
             <form action="">
-              <select name="" id="" onChange={onChange} data-id={name} value={qty}>
+              <select name="" id="" onChange={(e) => onChange(e, itemMeal)} data-id={id} value={qty}>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
