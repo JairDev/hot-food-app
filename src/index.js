@@ -11,6 +11,9 @@ import { createStore} from "redux"
 const store = createStore(reducer)
 console.log(store.getState())
 store.dispatch({type: "FILTER"})
+console.log(store.getState())
+store.dispatch({type: "ADD_MEAL"})
+console.log(store.getState())
 
 ReactDOM.render(
   <Provider store={store}>
