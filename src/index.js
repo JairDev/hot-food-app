@@ -5,15 +5,34 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import reducer from "./reducers"
-import { createStore} from "redux"
 
-const store = createStore(reducer)
-console.log(store.getState())
-store.dispatch({type: "FILTER"})
-console.log(store.getState())
-store.dispatch({type: "ADD_MEAL"})
-console.log(store.getState())
+import thunkMiddleware from "redux-thunk"
+import { createStore, applyMiddleware } from "redux"
+import { createLogger } from "redux-logger"
+import { fetchMeals } from "./actions"
+import reducer from "./reducers"
+
+const loggerMiddleware = createLogger()
+
+const store = createStore(
+  reducer,
+  applyMiddleware(
+    thunkMiddleware,
+    loggerMiddleware
+  )
+)
+
+store.dispatch(fetchMeals()).then(() => console.log(store.getState()))
+
+// const store = createStore(reducer)
+// console.log(store.getState())
+// let unsubscribe = store.subscribe(() => console.log(store.getState()))
+// store.dispatch({type: "FILTER"})
+// console.log(store.getState())
+// store.dispatch({type: "ADD_MEAL"})
+// console.log(store.getState())
+
+// unsubscribe()
 
 ReactDOM.render(
   <Provider store={store}>
