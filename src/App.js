@@ -4,8 +4,6 @@ import Home from "pages/Home/Home";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Cart from "components/Cart/Cart";
 
-
-
 function App() {
   return (
     <Router>

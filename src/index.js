@@ -17,12 +17,14 @@ const loggerMiddleware = createLogger()
 const store = createStore(
   reducer,
   applyMiddleware(
-    thunkMiddleware,
-    loggerMiddleware
+    thunkMiddleware, //Nos permite despachar funciones
+    loggerMiddleware //Middleware que registra las acciones 
   )
 )
 
-store.dispatch(fetchMeals()).then(() => console.log(store.getState()))
+
+// store.dispatch(fetchMeals()).then(() => console.log(store.getState()))
+// console.log(store.getState())
 
 // const store = createStore(reducer)
 // console.log(store.getState())

@@ -1,5 +1,6 @@
+import MealsList from "components/MealsList/MealsList";
 import { combineReducers } from "redux";
-import { REQUEST_MEALS, RECEIVE_MEALS} from "../actions"
+import { REQUEST_MEALS, RECEIVE_MEALS, FILTER_BY_PRICE} from "../actions"
 
 const initialState = {
   isFetching: false,
@@ -7,19 +8,33 @@ const initialState = {
 };
 
 function mealList(state = initialState, action) {
-  switch(action.type) {
+  switch(action.type) { 
     case REQUEST_MEALS:
       return Object.assign({}, state, {
         isFetching: true
       })
     case RECEIVE_MEALS:
+      console.log(action)
       return Object.assign({}, state, {
         isFetching: false,
-        items: action.meals
+        meals: action.payload
       })
     default:
       return state
   }
 }
 
-export default mealList
+function visibilityAll (state = "ALL", action) {
+  switch (action.type) {
+    case FILTER_BY_PRICE:
+      return action.payload
+    default:
+      return state   
+  }
+}
+const mealApp = combineReducers({
+  mealList,
+  visibilityAll
+})
+
+export default mealApp

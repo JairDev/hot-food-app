@@ -59,13 +59,13 @@ const Cart = () => {
           <h1 className="text-4xl flex justify-center mb-12">Cart</h1>
         </div>
         <div className="meals-cart">
-          <MealsList
+          {/* <MealsList
             array={storage}
             classCart={"style-cart"}
             id="mealscart"
             onChange={handleChange}
             onRemove={handleRemove}
-          />
+          /> */}
         </div>
         <div className="order-done flex p-4">
           <div className="content-make-order w-full">
