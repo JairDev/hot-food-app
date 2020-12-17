@@ -3,6 +3,7 @@ import data from "../data-price/data-price.json"
 export const REQUEST_MEALS = "REQUEST_MEALS"
 export const RECEIVE_MEALS = "RECEIVE_MEALS"
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE"
+export const MEAL_SEARCH = "MEAL_SEARCH"
 
 export function requestMeals() {
   return {
@@ -21,6 +22,13 @@ export function filterByPrice(filter) {
   return {
     type: FILTER_BY_PRICE,
     payload: filter
+  }
+}
+
+export function mealSearch(searchText) {
+  return{
+    type: MEAL_SEARCH,
+    payload: searchText
   }
 }
 

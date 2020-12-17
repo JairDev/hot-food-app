@@ -1,13 +1,21 @@
+import { mealSearch } from "actions";
 import React from "react";
+import { connect } from "react-redux";
 
-const SearchBar = ({ textSearch, onChange, onSubmit }) => {
+const SearchBar = ({onChange, onSubmit, dispatch}) => {
+  // console.log(onChange, onSubmit)
+  let input;
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={e => {
+      e.preventDefault()
+      dispatch(mealSearch(input.value))
+    }}>
       <input
         className="text-blue h-h5 text-textcolor pl-4"
         type="text"
-        value={textSearch}
+        // value={textSearch}
         onChange={onChange}
+        ref={node => input = node}
       />
       <button className="px-4 bg-searchcolor h-full">
         <svg className="icon icon-search">
@@ -18,4 +26,27 @@ const SearchBar = ({ textSearch, onChange, onSubmit }) => {
   );
 };
 
-export default SearchBar;
+const mapStateToProps = (state) => {
+  return state
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    onChange: (e) => console.log(e.target.value),
+    onSubmit: function(e) {
+      const node = e.target.childNodes
+      for(let n of node) {
+        console.log(n.nodeName)
+        if(n.nodeName === "INPUT") {
+          console.log(n.value)
+        }
+      }
+      console.log(node)
+      e.preventDefault()
+
+    }
+  }
+}
+
+const Search = connect()(SearchBar)
+export default Search;

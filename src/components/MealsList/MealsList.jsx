@@ -3,7 +3,7 @@ import Meal from "components/Meal/Meal";
 import MealCart from "components/MealCart/MealCart";
 
 const MealsList = ({ array, onClick, onChange, classCart, id, onRemove}) => {
-  console.log(array)
+  // console.log(array)
   if (id === "mealshome") {
     return array.map((meal) => (
       <Meal

@@ -27,7 +27,7 @@ const FilterableProducts = (props) => {
   const [textSearch, setTextSearch] = useState("");
   const [storage, setStorage] = useLocalStorage();
   // const [textLabel, setTextLabel] = useState("");
-  const { dispatch, allMeals } = props
+  const { dispatch, meals } = props
 
   useEffect(() => {
     // getMeals(data).then((res) => setMeals(res.meals));
@@ -67,38 +67,46 @@ const FilterableProducts = (props) => {
   //   addToCart(meal, qty, storage, setStorage)
   //   e.preventDefault()
   // }
-  console.log("props", props)
+  // console.log("props", props)
   return (
 
     <>
       <div className="App-content-search-bar w-full flex justify-center mt-4 mb-12 lg:w-auto relative z-50 ">
         <SearchBar onChange={handletextInput}  textSearch={textSearch} />
       </div>
-      <FilterPrice filter="LESS150">$80 - $150</FilterPrice>
+      <section className="content-price">
+        <div className="title-filter-price mb-4">
+          <span className="span-filter-price text-lg font-semibold">Filter by</span>
+        </div>
+        <FilterPrice filter="LESS_150">$80 - $150</FilterPrice>
+        <FilterPrice filter="GREATER_150">$150 - $316</FilterPrice>
+      </section>
       <div className="content-meals-menu flex flex-wrap justify-between mt-16">
-        <MealsList array={allMeals} id={"mealshome"} />
+        <MealsList array={meals} id={"mealshome"} />
       </div>
     </>
   );
 };
 
 function mealsAll(all, filter) {
-  // console.log("all", all.meals)
+  console.log("all", all.meals)
   switch (filter) {
     case "ALL":
       return all.meals
-    case "LESS150":
+    case "LESS_150":
       return all.meals.filter(meal => meal.price < 150)
+    case "GREATER_150":
+      return all.meals.filter(meal => meal.price > 150)
     default:
       return  
   }
 }
 
 const mapStateToProps = state => {
- console.log(state)
+//  console.log(state)
   return {
-    allMeals: mealsAll(state.mealList, state.visibilityAll) 
-  }
+    meals: mealsAll(state.mealList, state.visibilityAll) 
+  } 
 }
 
 const All = connect(mapStateToProps)(FilterableProducts)
