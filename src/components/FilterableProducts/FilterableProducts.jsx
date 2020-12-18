@@ -9,26 +9,23 @@ import getMeals from "services";
 import addToCart from "utils/addToCart";
 import data from "../../data-price/data-price.json";
 
-
-
-
 function filterMeals(array, keyword) {
-  return array.filter(meal => {
-    const regex = new RegExp(keyword, "gi")
-    return meal.strMeal.match(regex)
-  })
+  return array.filter((meal) => {
+    const regex = new RegExp(keyword, "gi");
+    return meal.strMeal.match(regex);
+  });
 }
 
 ///////////////////////////////
 
 const FilterableProducts = (props) => {
   // const [meals, setMeals] = useState([]);
-  const [mealsList, setMealsList] = useState([]);
+  // const [mealsList, setMealsList] = useState([]);
   const [textSearch, setTextSearch] = useState("");
   const [storage, setStorage] = useLocalStorage();
   // const [textLabel, setTextLabel] = useState("");
-  const { dispatch, meals } = props
-
+  const { dispatch, meals } = props;
+  console.log("----- props", props);
   useEffect(() => {
     // getMeals(data).then((res) => setMeals(res.meals));
     // setMealsList(meals)
@@ -37,7 +34,7 @@ const FilterableProducts = (props) => {
     // }
     // console.log(meals)
     // setMealsList(meals)
-    dispatch(fetchMeals())
+    dispatch(fetchMeals());
   }, [dispatch]);
 
   const handletextInput = (e) => {
@@ -45,20 +42,20 @@ const FilterableProducts = (props) => {
   };
 
   // const handleSubmit = (e) => {
-  //   const resultFilter =  filterMeals(meals, textSearch)
-  //   console.log(resultFilter)
-  //   // const label = resultFilter.map(meal => {
-  //   //   const regex = new RegExp(textSearch, "gi")
-  //   //   const mealName = meal.strMeal.replace(regex, `<span>${textSearch}</span>`) 
-  //   //   meal.strMeal = mealName
-  //   //   console.log(mealName)
-  //   //   console.log(regex)
-  //   //   return meal
-  //   // })
-  //   // console.log(label)
-  //   setMealsList(resultFilter)
-  //   // setTextLabel(textSearch)
-  //   setTextSearch("");
+  //   // const resultFilter =  filterMeals(meals, textSearch)
+  //   // console.log(resultFilter)
+  //   // // const label = resultFilter.map(meal => {
+  //   // //   const regex = new RegExp(textSearch, "gi")
+  //   // //   const mealName = meal.strMeal.replace(regex, `<span>${textSearch}</span>`)
+  //   // //   meal.strMeal = mealName
+  //   // //   console.log(mealName)
+  //   // //   console.log(regex)
+  //   // //   return meal
+  //   // // })
+  //   // // console.log(label)
+  //   // setMealsList(resultFilter)
+  //   // // setTextLabel(textSearch)
+  //   // setTextSearch("");
   //   e.preventDefault()
   // };
 
@@ -69,14 +66,15 @@ const FilterableProducts = (props) => {
   // }
   // console.log("props", props)
   return (
-
     <>
       <div className="App-content-search-bar w-full flex justify-center mt-4 mb-12 lg:w-auto relative z-50 ">
-        <SearchBar onChange={handletextInput}  textSearch={textSearch} />
+        <SearchBar />
       </div>
       <section className="content-price">
         <div className="title-filter-price mb-4">
-          <span className="span-filter-price text-lg font-semibold">Filter by</span>
+          <span className="span-filter-price text-lg font-semibold">
+            Filter by
+          </span>
         </div>
         <FilterPrice filter="LESS_150">$80 - $150</FilterPrice>
         <FilterPrice filter="GREATER_150">$150 - $316</FilterPrice>
@@ -89,25 +87,35 @@ const FilterableProducts = (props) => {
 };
 
 function mealsAll(all, filter) {
-  console.log("all", all.meals)
-  switch (filter) {
+  console.log("all", filter);
+  switch (filter.action) {
     case "ALL":
-      return all.meals
+      return all.meals;
     case "LESS_150":
-      return all.meals.filter(meal => meal.price < 150)
+      return all.meals.filter((meal) => meal.price < 150);
     case "GREATER_150":
-      return all.meals.filter(meal => meal.price > 150)
+      return all.meals.filter((meal) => meal.price > 150);
+    case "SEARCH":
+      return all.meals.filter((meal) => {
+        const regex = new RegExp(filter.id, "gi");
+        return meal.strMeal.match(regex);
+      });
     default:
-      return  
+      return all;
   }
 }
 
-const mapStateToProps = state => {
-//  console.log(state)
+const mapStateToProps = (state) => {
   return {
-    meals: mealsAll(state.mealList, state.visibilityAll) 
-  } 
-}
+    meals: mealsAll(state.mealList, state.visibilityAll),
+  };
+};
 
-const All = connect(mapStateToProps)(FilterableProducts)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSubmit: (e) => console.log(e),
+  };
+};
+
+const All = connect(mapStateToProps, null)(FilterableProducts);
 export default All;

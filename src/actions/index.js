@@ -18,10 +18,11 @@ export function receiveMeals(json) {
   }
 }
 
-export function filterByPrice(filter) {
+export function filterByPrice(filter,id) {
   return {
     type: FILTER_BY_PRICE,
-    payload: filter
+    payload: filter,
+    id
   }
 }
 

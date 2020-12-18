@@ -1,4 +1,4 @@
-import { mealSearch } from "actions";
+import { filterByPrice, mealSearch } from "actions";
 import React from "react";
 import { connect } from "react-redux";
 
@@ -8,13 +8,14 @@ const SearchBar = ({onChange, onSubmit, dispatch}) => {
   return (
     <form onSubmit={e => {
       e.preventDefault()
-      dispatch(mealSearch(input.value))
+      dispatch(filterByPrice("SEARCH", input.value))
+      input.value = ""
     }}>
       <input
         className="text-blue h-h5 text-textcolor pl-4"
         type="text"
         // value={textSearch}
-        onChange={onChange}
+        // onChange={onChange}
         ref={node => input = node}
       />
       <button className="px-4 bg-searchcolor h-full">

@@ -24,30 +24,29 @@ function mealList(state = initialState, action) {
   }
 }
 
-function visibilityAll (state = "ALL", action) {
-  // console.log("visibility", state)
+function visibilityAll (state = {action: "ALL"}, action) {
   switch (action.type) {
     case FILTER_BY_PRICE:
-      return action.payload
+      return {action: action.payload, id: action.id}
     default:
       return state   
   }
 }
 
-function mealSearchId(state = "", action) {
-  switch(action.type) {
-    case MEAL_SEARCH:
-      return {action: action.type, id: action.payload  }
-    default:
-      return state
-  }
-}
+// function mealSearchId(state = {}, action) {
+//   switch(action.type) {
+//     case MEAL_SEARCH:
+//       return action.payload
+//     default:
+//       return state
+//   }
+// }
 
 
 const mealApp = combineReducers({
   mealList,
   visibilityAll,
-  mealSearchId
+  // mealSearchId
 })
 
 export default mealApp

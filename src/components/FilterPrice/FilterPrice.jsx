@@ -22,10 +22,10 @@ const mapStateToProps = (state) => {
   return state
 }
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: (e) => {
-      e.target.checked ? dispatch(filterByPrice(props.filter)) : dispatch(filterByPrice("ALL"))
+      e.target.checked ? dispatch(filterByPrice(ownProps.filter)) : dispatch(filterByPrice("ALL"))
     }
   }
 }
