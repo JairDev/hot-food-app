@@ -9,6 +9,8 @@
 /.pnp
 .pnp.js
 .tags
+.tags.lock
+.tags.temp
 # testing
 /coverage
 

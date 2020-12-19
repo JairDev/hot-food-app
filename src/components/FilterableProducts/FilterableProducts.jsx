@@ -86,26 +86,24 @@ const FilterableProducts = (props) => {
   );
 };
 
+
+
 function mealsAll(all, filter) {
-  console.log("all", filter);
-  switch (filter.action) {
+  console.log("all", all);
+  switch (filter) {
     case "ALL":
       return all.meals;
     case "LESS_150":
       return all.meals.filter((meal) => meal.price < 150);
     case "GREATER_150":
       return all.meals.filter((meal) => meal.price > 150);
-    case "SEARCH":
-      return all.meals.filter((meal) => {
-        const regex = new RegExp(filter.id, "gi");
-        return meal.strMeal.match(regex);
-      });
     default:
       return all;
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     meals: mealsAll(state.mealList, state.visibilityAll),
   };

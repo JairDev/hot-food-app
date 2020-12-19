@@ -8,7 +8,7 @@ const SearchBar = ({onChange, onSubmit, dispatch}) => {
   return (
     <form onSubmit={e => {
       e.preventDefault()
-      dispatch(filterByPrice("SEARCH", input.value))
+      dispatch(mealSearch(input.value))
       input.value = ""
     }}>
       <input
