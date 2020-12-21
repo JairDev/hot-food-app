@@ -1,4 +1,4 @@
-import { filterByPrice, mealSearch } from "actions";
+import { a, filterByPrice, mealSearch } from "actions";
 import React from "react";
 import { connect } from "react-redux";
 

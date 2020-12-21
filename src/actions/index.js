@@ -32,6 +32,14 @@ export function mealSearch(searchText) {
   }
 }
 
+export function a(meal) {
+  console.log(meal)
+  return function(dispatch, state) {
+    console.log(dispatch)
+    console.log(state())
+  }
+}
+
 // He aqui nuestro primer creador thunk action!
 // Aunque internamente son diferentes, lo usarás como cualquier otro creador de acción:
 // store.dispatch(fetchPosts('reactjs'))

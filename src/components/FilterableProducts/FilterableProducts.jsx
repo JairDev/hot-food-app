@@ -5,6 +5,7 @@ import SearchBar from "components/SearchBar/SearchBar";
 import useLocalStorage from "hooks/useLocalStorage";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { getVisibleAllMeals, getVisibleByKeyword } from "selectors";
 import getMeals from "services";
 import addToCart from "utils/addToCart";
 import data from "../../data-price/data-price.json";
@@ -105,11 +106,11 @@ function mealsAll(all, filter) {
 const mapStateToProps = (state) => {
   console.log(state)
   return {
-    meals: mealsAll(state.mealList, state.visibilityAll),
+    meals: getVisibleByKeyword(state)
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSubmit: (e) => console.log(e),
   };

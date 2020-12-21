@@ -6,12 +6,7 @@ const initialState = {
   isFetching: false,
   meals: []
 };
-function filterMeals(array, keyword) {
-  return array.filter((meal) => {
-    const regex = new RegExp(keyword, "gi");
-    return meal.strMeal.match(regex);
-  });
-}
+
 
 function mealList(state = initialState, action) {
   console.log("actions", action.type)
@@ -26,9 +21,6 @@ function mealList(state = initialState, action) {
         isFetching: false,
         meals: action.payload
       })
-    case MEAL_SEARCH:
-      // console.log("state---", state.meals, action.payload)
-      return {meals: filterMeals(state.meals, action.payload)}
     default:
       return state
   }
@@ -43,7 +35,7 @@ function visibilityAll (state = "ALL", action) {
   }
 }
 
-function mealSearchId(state = "", action) {
+function mealSearchId(state = null, action) {
   switch(action.type) {
     case MEAL_SEARCH:
       return action.payload
