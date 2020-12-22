@@ -3,19 +3,21 @@ import Header from "components/Header/Header";
 import MealsList from "components/MealsList/MealsList";
 import useLocalStorage from "hooks/useLocalStorage";
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { getAddToCart } from "selectors";
 import thisItemExist from "utils/thisItemExist";
 
 const classCartButton = "bg-buttoncolor w-full p-4 text-lg font-semibold";
 
-const Cart = () => {
+const Cart = (props) => {
   const [storage, setStorage] = useLocalStorage();
   const [subTotal, setSubTotal] = useState(0);
   const tax = 10;
-
+ console.log("props cart", props)
   useEffect(() => {
-    const map = storage.map(item => item.qty * item.price)
-      .reduce((acc,current) => acc + current)
-    setSubTotal(map);
+    // const map = storage.map(item => item.qty * item.price)
+    //   .reduce((acc,current) => acc + current)
+    // setSubTotal(map);
     // return () => {
     //   cleanup
     // }
@@ -50,7 +52,7 @@ const Cart = () => {
     console.log("click")
     e.preventDefault(e)
   }
-
+ const getItem = JSON.parse(localStorage.getItem("meals")) || []
   return (
     <>
       <Header />
@@ -59,13 +61,13 @@ const Cart = () => {
           <h1 className="text-4xl flex justify-center mb-12">Cart</h1>
         </div>
         <div className="meals-cart">
-          {/* <MealsList
-            array={storage}
+          <MealsList
+            array={getItem}
             classCart={"style-cart"}
             id="mealscart"
             onChange={handleChange}
             onRemove={handleRemove}
-          /> */}
+          />
         </div>
         <div className="order-done flex p-4">
           <div className="content-make-order w-full">
@@ -93,4 +95,10 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+const mapStateToProps = (state) => {
+  console.log(state)
+  return state
+}
+
+
+export default connect(mapStateToProps, null)(Cart);

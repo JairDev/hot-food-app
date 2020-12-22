@@ -7,7 +7,6 @@ const classMealButton = "text-base font-semibold";
 
 const Meal = ({ name, mealSrc, price, onClick, itemMeal }) => {
   const [qty, setQty] = useState(1);
-
   const handleChange = (e) => {
     setQty(e.target.value);
   };
@@ -32,7 +31,8 @@ const Meal = ({ name, mealSrc, price, onClick, itemMeal }) => {
               className={classMealButton}
               id={name}
               qty={qty}
-              onClick={(e) => onClick(e, itemMeal)}
+              meal={itemMeal}
+              // onClick={(e) => onClick(e, itemMeal)}
             />
           </div>
         </div>

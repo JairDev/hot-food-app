@@ -14,6 +14,7 @@ const MealsList = ({ array, onClick, onChange, classCart, id, onRemove}) => {
         onClick={onClick}
         classCart={classCart}
         itemMeal={meal}
+        
       />
     ));
   } else {

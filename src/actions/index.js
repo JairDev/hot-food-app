@@ -4,6 +4,7 @@ export const REQUEST_MEALS = "REQUEST_MEALS"
 export const RECEIVE_MEALS = "RECEIVE_MEALS"
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE"
 export const MEAL_SEARCH = "MEAL_SEARCH"
+export const ADD_TO_CART = "ADD_TO_CART"
 
 export function requestMeals() {
   return {
@@ -29,16 +30,16 @@ export function mealSearch(searchText) {
   return{
     type: MEAL_SEARCH,
     payload: searchText
+
+  }
+} 
+export function addToCart(id, mealObj) {
+  return {
+    type: ADD_TO_CART,
+    payload: {id, mealObj}
   }
 }
 
-export function a(meal) {
-  console.log(meal)
-  return function(dispatch, state) {
-    console.log(dispatch)
-    console.log(state())
-  }
-}
 
 // He aqui nuestro primer creador thunk action!
 // Aunque internamente son diferentes, lo usarás como cualquier otro creador de acción:
