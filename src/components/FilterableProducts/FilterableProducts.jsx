@@ -26,7 +26,7 @@ const FilterableProducts = (props) => {
   const [storage, setStorage] = useLocalStorage();
   // const [textLabel, setTextLabel] = useState("");
   const { dispatch, meals } = props;
-  console.log("----- props", props);
+  // console.log("----- props", props);
   useEffect(() => {
     // getMeals(data).then((res) => setMeals(res.meals));
     // setMealsList(meals)
@@ -90,7 +90,7 @@ const FilterableProducts = (props) => {
 
 
 function mealsAll(all, filter) {
-  console.log("all", all);
+  // console.log("all", all);
   switch (filter) {
     case "ALL":
       return all.meals;

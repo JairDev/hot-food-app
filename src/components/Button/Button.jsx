@@ -1,4 +1,4 @@
-import { addToCart } from "actions"
+import { addToCart, cart } from "actions"
 import React from "react"
 import { connect } from "react-redux"
 
@@ -20,10 +20,10 @@ const Button = ({children, className, onClick, id, qty, meal}) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: (e) => {
-      console.log(ownProps)
       e.preventDefault()
-      dispatch(addToCart(ownProps.id, ownProps.meal))
-      console.log("click")
+      // dispatch(addToCart(ownProps.id))
+      dispatch(cart(ownProps.id))
+      // console.log("click")
     }
   }
 }

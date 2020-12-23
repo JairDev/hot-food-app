@@ -1,10 +1,17 @@
-import MealsList from "components/MealsList/MealsList";
+import { act } from "@testing-library/react";
 import { combineReducers } from "redux";
 import { REQUEST_MEALS, RECEIVE_MEALS, FILTER_BY_PRICE, MEAL_SEARCH, ADD_TO_CART} from "../actions"
 
+function filterMeals(array, keyword) {
+  return array.filter((meal) => {
+    const regex = new RegExp(keyword, "gi");
+    return meal.strMeal.match(regex);
+  });
+}
 const initialState = {
   isFetching: false,
-  meals: []
+  meals: [],
+  id: ""
 };
 
 
@@ -19,6 +26,7 @@ function mealList(state = initialState, action) {
         isFetching: false,
         meals: action.payload
       })
+
     default:
       return state
   }
@@ -46,11 +54,13 @@ function mealAddToCart(state = [], action) {
   switch(action.type) {
     case ADD_TO_CART:
       console.log(state)
-      return exist(state, action.payload.id, action.payload.mealObj)
+      return {...state, mealCart: filterMeals(action.payload.mealObj, action.payload.id)}
     default:
       return state
   }
 }
+
+
 function exist(state, id, item) {
   const find = state.findIndex(meal => meal.strMeal === id)
   if(find === -1) {
@@ -59,7 +69,6 @@ function exist(state, id, item) {
   }else {
     return state
   }
-
 }
 const mealApp = combineReducers({
   mealList,

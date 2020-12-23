@@ -40,7 +40,14 @@ export function addToCart(id, mealObj) {
   }
 }
 
-
+export function cart(id) {
+  return(dispatch, getState) => {
+    console.log(getState())
+    const {mealList} = getState()
+    // console.log(mealList.meals)
+    dispatch(addToCart(id, mealList.meals))
+  }
+}
 // He aqui nuestro primer creador thunk action!
 // Aunque internamente son diferentes, lo usarás como cualquier otro creador de acción:
 // store.dispatch(fetchPosts('reactjs'))

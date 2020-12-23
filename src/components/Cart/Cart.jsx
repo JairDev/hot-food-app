@@ -96,7 +96,9 @@ const Cart = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state)
+  console.log(state.mealList.meals)
+  console.log(state.mealAddToCart)
+  
   return state
 }
 

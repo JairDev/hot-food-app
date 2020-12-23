@@ -8,11 +8,6 @@ const MealsList = ({ array, onClick, onChange, classCart, id, onRemove}) => {
     return array.map((meal) => (
       <Meal
         key={meal.strMeal}
-        name={meal.strMeal}
-        mealSrc={meal.strMealThumb}
-        price={meal.price}
-        onClick={onClick}
-        classCart={classCart}
         itemMeal={meal}
         
       />
