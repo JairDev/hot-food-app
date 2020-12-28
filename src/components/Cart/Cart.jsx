@@ -9,19 +9,12 @@ import thisItemExist from "utils/thisItemExist";
 
 const classCartButton = "bg-buttoncolor w-full p-4 text-lg font-semibold";
 
-const Cart = (props) => {
+const Cart = ({mealAddToCart, onClick}) => {
+  console.log(onClick)
   const [storage, setStorage] = useLocalStorage();
   const [subTotal, setSubTotal] = useState(0);
   const tax = 10;
- console.log("props cart", props)
-  useEffect(() => {
-    // const map = storage.map(item => item.qty * item.price)
-    //   .reduce((acc,current) => acc + current)
-    // setSubTotal(map);
-    // return () => {
-    //   cleanup
-    // }
-  }, [storage]);
+  const getItem = JSON.parse(localStorage.getItem("meals")) || [];
 
   const handleChange = (e, itemMeal) => {
     const id = itemMeal.idMeal;
@@ -40,19 +33,18 @@ const Cart = (props) => {
   };
 
   const handleRemove = (e) => {
-    const id = e.target.dataset.id
-    const newArr = [...storage]
-    const filter = newArr.filter(item => item.strMeal !== id)
-    setStorage(filter)
-    e.preventDefault()
-
+    const id = e.target.dataset.id;
+    const newArr = [...storage];
+    const filter = newArr.filter((item) => item.strMeal !== id);
+    setStorage(filter);
+    e.preventDefault();
   };
 
   const handleClick = (e) => {
-    console.log("click")
-    e.preventDefault(e)
-  }
- const getItem = JSON.parse(localStorage.getItem("meals")) || []
+    console.log("click");
+    e.preventDefault(e);
+  };
+
   return (
     <>
       <Header />
@@ -62,11 +54,11 @@ const Cart = (props) => {
         </div>
         <div className="meals-cart">
           <MealsList
-            array={getItem}
+            array={mealAddToCart}
             classCart={"style-cart"}
             id="mealscart"
-            onChange={handleChange}
-            onRemove={handleRemove}
+            //onChange={handleChange}
+            //onRemove={onClick}
           />
         </div>
         <div className="order-done flex p-4">
@@ -96,11 +88,18 @@ const Cart = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state.mealList.meals)
-  console.log(state.mealAddToCart)
-  
-  return state
+  console.log(state.mealList.meals);
+  console.log(state.mealAddToCart);
+
+  return state;
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onClick: (e) => {
+      e.preventDefault()
+      console.log("delete")
+    }
+  }
 }
-
-
-export default connect(mapStateToProps, null)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

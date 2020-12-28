@@ -8,17 +8,17 @@ import { Provider } from 'react-redux';
 
 import thunkMiddleware from "redux-thunk"
 import { createStore, applyMiddleware } from "redux"
-import { createLogger } from "redux-logger"
+import { logger } from "redux-logger"
 import { fetchMeals } from "./actions"
 import reducer from "./reducers"
 
-const loggerMiddleware = createLogger()
+//const loggerMiddleware = createLogger()
 
 const store = createStore(
   reducer,
   applyMiddleware(
     thunkMiddleware, //Nos permite despachar funciones
-    loggerMiddleware //Middleware que registra las acciones 
+    logger //Middleware que registra las acciones 
   )
 )
 

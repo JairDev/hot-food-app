@@ -20,10 +20,8 @@ const MealsList = ({ array, onClick, onChange, classCart, id, onRemove}) => {
         mealSrc={meal.strMealThumb}
         price={meal.price}
         qty={meal.qty}
-        onClick={onClick}
         classCart={classCart}
         onChange={onChange}
-        onRemove={onRemove}
         id={meal.idMeal}
         itemMeal={meal}
       />

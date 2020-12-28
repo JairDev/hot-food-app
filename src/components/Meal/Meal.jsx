@@ -2,14 +2,11 @@ import Button from "components/Button/Button";
 import Price from "components/Price/Price";
 import SelectOption from "components/SelectOption/SelectOption";
 import React, { useState } from "react";
-
+import { connect } from "react-redux";
 const classMealButton = "text-base font-semibold";
 
-const Meal = ({ itemMeal }) => {
-  const [qty, setQty] = useState(1);
-  const handleChange = (e) => {
-    setQty(e.target.value);
-  };
+const Meal = ({ itemMeal, handleChange }) => {
+
   
   return (
     <div className={`content-meal-style w-2/5 lg:w-w30`}>
@@ -30,7 +27,7 @@ const Meal = ({ itemMeal }) => {
               children={"Add to Cart"}
               className={classMealButton}
               id={itemMeal.strMeal}
-              qty={qty}
+              //qty={qty}
               meal={itemMeal}
               // onClick={(e) => onClick(e, itemMeal)}
             />
@@ -41,4 +38,13 @@ const Meal = ({ itemMeal }) => {
   );
 };
 
-export default Meal;
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    handleChange: (e) => {
+      console.log(e)
+      console.log(ownProps)
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Meal);

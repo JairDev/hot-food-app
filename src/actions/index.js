@@ -5,6 +5,9 @@ export const RECEIVE_MEALS = "RECEIVE_MEALS"
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE"
 export const MEAL_SEARCH = "MEAL_SEARCH"
 export const ADD_TO_CART = "ADD_TO_CART"
+export const DELETE_MEAL = "DELETE_MEAL" 
+export const INCREASE_QTY = "INCREASE_QTY"
+export const DECREASE_QTY = "DECREASE_QTY"
 
 export function requestMeals() {
   return {
@@ -33,12 +36,29 @@ export function mealSearch(searchText) {
 
   }
 } 
+
 export function addToCart(id, mealObj) {
   return {
     type: ADD_TO_CART,
-    payload: {id, mealObj}
+    payload: mealObj
   }
 }
+
+export function deleteCartMeal(id) {
+  return {
+    type: DELETE_MEAL,
+    payload: id
+  }
+}
+
+export function increaseQty(qty) {
+  return {
+    type: INCREASE_QTY,
+    payload: qty
+  }
+}
+
+
 
 export function cart(id) {
   return(dispatch, getState) => {
