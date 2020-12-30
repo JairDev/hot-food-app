@@ -9,42 +9,19 @@ import thisItemExist from "utils/thisItemExist";
 
 const classCartButton = "bg-buttoncolor w-full p-4 text-lg font-semibold";
 
-const Cart = ({mealAddToCart, onClick}) => {
-  console.log(onClick)
-  const [storage, setStorage] = useLocalStorage();
-  const [subTotal, setSubTotal] = useState(0);
+const Cart = ({ cartMeals, subTotal, onClick }) => {
   const tax = 10;
-  const getItem = JSON.parse(localStorage.getItem("meals")) || [];
 
-  const handleChange = (e, itemMeal) => {
-    const id = itemMeal.idMeal;
-    const qty = parseInt(e.target.value);
-    const nObj = Object.assign(
-      {},
-      {
-        ...itemMeal,
-        qty,
-      }
+  if (cartMeals.length === 0) {
+    return (
+      <>
+        <Header />
+        <div className="text-3xl flex h-screen items-center justify-center relative">
+          Cart is empty...{" "}
+        </div>
+      </>
     );
-    const newArr = [...storage];
-    const findIndex = thisItemExist(newArr, id);
-    newArr.splice(findIndex, 1, nObj);
-    setStorage(newArr);
-  };
-
-  const handleRemove = (e) => {
-    const id = e.target.dataset.id;
-    const newArr = [...storage];
-    const filter = newArr.filter((item) => item.strMeal !== id);
-    setStorage(filter);
-    e.preventDefault();
-  };
-
-  const handleClick = (e) => {
-    console.log("click");
-    e.preventDefault(e);
-  };
-
+  }
   return (
     <>
       <Header />
@@ -54,11 +31,9 @@ const Cart = ({mealAddToCart, onClick}) => {
         </div>
         <div className="meals-cart">
           <MealsList
-            array={mealAddToCart}
+            array={cartMeals}
             classCart={"style-cart"}
             id="mealscart"
-            //onChange={handleChange}
-            //onRemove={onClick}
           />
         </div>
         <div className="order-done flex p-4">
@@ -75,11 +50,7 @@ const Cart = ({mealAddToCart, onClick}) => {
               <span>Total:</span>
               <span className="ml-4">${subTotal + tax}</span>
             </span>
-            <Button
-              children={"ORDER"}
-              className={classCartButton}
-              onClick={handleClick}
-            />
+            <Button children={"ORDER"} className={classCartButton} />
           </div>
         </div>
       </div>
@@ -88,18 +59,20 @@ const Cart = ({mealAddToCart, onClick}) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state.mealList.meals);
-  console.log(state.mealAddToCart);
-
-  return state;
+  const { cartMeals } = state.mealList;
+  const sum = cartMeals.map(({ price, qty }) => {
+    const result = parseInt(qty) * parseInt(price)
+    return result
+  }).reduce((acc, current) => acc + current)
+  return { cartMeals, subTotal: sum };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: (e) => {
-      e.preventDefault()
-      console.log("delete")
-    }
-  }
-}
+      e.preventDefault();
+      console.log("delete");
+    },
+  };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

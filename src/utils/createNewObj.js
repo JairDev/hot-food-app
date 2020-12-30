@@ -1,12 +1,12 @@
-function createNewObj(meal, qty) {
-  const nObj = Object.assign(
+function createNewObj(item, qty) {
+  const obj = Object.assign(
     {},
     {
-      ...meal,
+      ...item,
       qty,
     }
   );
-  return nObj;
+  return obj;
 }
 
 export default createNewObj

@@ -2,7 +2,7 @@ import Price from "components/Price/Price"
 import useLocalStorage from "hooks/useLocalStorage";
 import React from "react"
 import { connect } from "react-redux"
-import { deleteCartMeal } from "../../actions"
+import { deleteCartMeal, updateQty } from "../../actions"
 
 const MealCart = ({name, mealSrc, price, qty, onChange, onClick, id, itemMeal}) => {
 
@@ -51,8 +51,9 @@ const mapDispatchToProps = (dispatch, ownProps) =>{
       dispatch(deleteCartMeal(id))
     },
     onChange: (e) => {
-      console.log(e.target.value)
-      console.log(ownProps)
+      //console.log(e.target.value)
+      //console.log(ownProps)
+      dispatch(updateQty(e.target.value, ownProps.itemMeal))
     }
   }
 }

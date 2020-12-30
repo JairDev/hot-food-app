@@ -3,6 +3,7 @@ import Price from "components/Price/Price";
 import SelectOption from "components/SelectOption/SelectOption";
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { setQty } from "../../actions"
 const classMealButton = "text-base font-semibold";
 
 const Meal = ({ itemMeal, handleChange }) => {
@@ -41,8 +42,9 @@ const Meal = ({ itemMeal, handleChange }) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     handleChange: (e) => {
-      console.log(e)
+      //console.log(e.target.value)
       console.log(ownProps)
+      dispatch(setQty(e.target.value))
     }
   }
 }
