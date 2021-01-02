@@ -1,6 +1,7 @@
 import { act } from "@testing-library/react";
 import { combineReducers } from "redux";
-import findIndex from "../utils/thisItemExist"
+import findIndex from "../utils/thisItemExist";
+import createNewObj from "../utils/createNewObj";
 import {
   REQUEST_MEALS,
   RECEIVE_MEALS,
@@ -32,16 +33,10 @@ const initialState = {
 function mealList(state = initialState, action) {
   switch (action.type) {
     case REQUEST_MEALS:
-      return Object.assign({}, state, {
-        isFetching: true,
-      });
+      return { ...state, isFetching: true};
     case RECEIVE_MEALS:
-      return Object.assign({}, state, {
-        isFetching: false,
-        meals: action.payload,
-      });
+      return { ...state, isFetching: false, meals: action.payload };
     case ADD_TO_CART:
-      console.log(action.payload);
       return {
         ...state,
         cartMeals: setCart(state.cartMeals, action.payload, state.qty),
@@ -49,12 +44,12 @@ function mealList(state = initialState, action) {
     case QUANTITY:
       return { ...state, qty: action.payload };
     case UPDATE_QTY:
-      const item = action.payload.item
-      const qty = action.payload.qty
-      const id = action.payload.item.strMeal
-      const findIdx = findIndex(state.cartMeals, id)
+      const item = action.payload.item;
+      const qty = action.payload.qty;
+      const id = action.payload.item.strMeal;
+      const findIdx = findIndex(state.cartMeals, "strMeal", id);
       const copyArrCart = [...state.cartMeals];
-      const obj = createCopyObj(item, qty)
+      const obj = createNewObj(item, qty);
       copyArrCart.splice(findIdx, 1, obj);
       localStorage.setItem("meals", JSON.stringify(copyArrCart));
       return { ...state, cartMeals: copyArrCart };
@@ -68,17 +63,9 @@ function mealList(state = initialState, action) {
   }
 }
 
-function createCopyObj(item, qty) {
- const obj = Object.assign({}, {
-   ...item,
-   qty
- }) 
-  return obj
-}
-
 function setCart(cart, item, qty) {
   const copyCart = [...cart];
-  const obj = createCopyObj(item, qty)
+  const obj = createNewObj(item, qty);
   const itemExist = exist(copyCart, obj);
   localStorage.setItem("meals", JSON.stringify(itemExist));
   return itemExist;
@@ -102,34 +89,11 @@ function mealSearchId(state = null, action) {
   }
 }
 
-function mealAddToCart(state = initialState, action) {
-  switch (action.type) {
-    case ADD_TO_CART:
-      console.log(state, action.payload);
-    //return exist(state, action.payload)
-    case DELETE_MEAL:
-      console.log(action.payload, state);
-    //return deleteMeal(action.payload, state)
-    case QUANTITY:
-      console.log(state);
-    default:
-      return state;
-  }
-}
-
-function qtyy(state = 1, action) {
-  switch (action.payload) {
-    case QUANTITY:
-      return action.payload;
-    default:
-      return state;
-  }
-}
-
 function exist(arr, item) {
-  const find = arr.findIndex((meal) => meal.strMeal === item.strMeal);
+  const id = item.strMeal;
+  const findIdx = findIndex(arr, "strMeal", id);
 
-  if (find === -1) {
+  if (findIdx === -1) {
     localStorage.setItem("meals", JSON.stringify([...arr, item]));
     return [...arr, item];
   } else {
@@ -146,7 +110,7 @@ function deleteMeal(id, array) {
 const mealApp = combineReducers({
   mealList,
   visibilityAll,
-  mealSearchId
+  mealSearchId,
 });
 
 export default mealApp;

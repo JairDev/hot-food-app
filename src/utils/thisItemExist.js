@@ -1,5 +1,5 @@
-function findIndex(array, id) {
-  const findIdx = array.findIndex(item => item.strMeal === id)
+function findIndex(array, key, id) {
+  const findIdx = array.findIndex(item => item[key] === id)
   return findIdx
 }
 
