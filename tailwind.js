@@ -15,6 +15,9 @@ module.exports = {
         "h5": "5vh",
         "h30": "30vh"
       },
+      width: {
+	"w45": "45%"
+      },
       spacing: {
         "w30": "30%"
         

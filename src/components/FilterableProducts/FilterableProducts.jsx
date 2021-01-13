@@ -12,7 +12,7 @@ import data from "../../data-price/data-price.json";
 
 const FilterableProducts = ({ dispatch, meals }) => {
   const [storage, setStorage] = useLocalStorage();
-
+  console.log(meals)
   useEffect(() => {
     dispatch(fetchMeals());
   }, [dispatch]);
@@ -28,6 +28,7 @@ const FilterableProducts = ({ dispatch, meals }) => {
             Filter by
           </span>
         </div>
+        <FilterPrice filter="ALL">All</FilterPrice>
         <FilterPrice filter="LESS_150">$80 - $150</FilterPrice>
         <FilterPrice filter="GREATER_150">$150 - $316</FilterPrice>
       </section>

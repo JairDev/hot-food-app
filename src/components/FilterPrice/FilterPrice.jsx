@@ -9,7 +9,7 @@ const FilterPrice = ({onClick, children}) => {
         <div className="meals-price">
           <label htmlFor="">
             <input  onClick={onClick} type="checkbox" id="price"/>
-            <span className="span-80-150 ml-4">{children}</span>
+            <span className="span-80-150 ml-4 text-lg">{children}</span>
           </label>
         </div>
       </form>

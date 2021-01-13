@@ -1,4 +1,3 @@
-import { act } from "@testing-library/react";
 import { combineReducers } from "redux";
 import findIndex from "../utils/thisItemExist";
 import createNewObj from "../utils/createNewObj";
@@ -15,25 +14,19 @@ import {
 
 const cartArr = JSON.parse(localStorage.getItem("meals")) || [];
 
-function filterMeals(array, keyword) {
-  return array.filter((meal) => {
-    const regex = new RegExp(keyword, "gi");
-    return meal.strMeal.match(regex);
-  });
-}
-
 const initialState = {
   isFetching: false,
   meals: [],
   cartMeals: cartArr,
-  id: "",
   qty: 1,
+  mealSearchId: null,
+  visibilityAll: "ALL"
 };
 
 function mealList(state = initialState, action) {
   switch (action.type) {
     case REQUEST_MEALS:
-      return { ...state, isFetching: true};
+      return { ...state, isFetching: true };
     case RECEIVE_MEALS:
       return { ...state, isFetching: false, meals: action.payload };
     case ADD_TO_CART:
@@ -58,6 +51,11 @@ function mealList(state = initialState, action) {
         ...state,
         cartMeals: deleteMeal(action.payload, state.cartMeals),
       };
+    case MEAL_SEARCH: 
+      console.log(action.payload)
+      return{...state, mealSearchId: action.payload, visibilityAll: null}
+    case FILTER_BY_PRICE:
+      return {...state, visibilityAll: action.payload }
     default:
       return state;
   }
@@ -71,23 +69,23 @@ function setCart(cart, item, qty) {
   return itemExist;
 }
 
-function visibilityAll(state = "ALL", action) {
-  switch (action.type) {
-    case FILTER_BY_PRICE:
-      return action.payload;
-    default:
-      return state;
-  }
-}
+//function visibilityAll(state = "ALL", action) {
+//  switch (action.type) {
+//    case FILTER_BY_PRICE:
+//      return action.payload;
+//    default:
+//      return state;
+//  }
+//}
 
-function mealSearchId(state = null, action) {
-  switch (action.type) {
-    case MEAL_SEARCH:
-      return action.payload;
-    default:
-      return state;
-  }
-}
+//function mealSearchId(state = null, action) {
+//  switch (action.type) {
+//    case MEAL_SEARCH:
+//      return action.payload;
+//    default:
+//      return state;
+//  }
+//}
 
 function exist(arr, item) {
   const id = item.strMeal;
@@ -109,8 +107,8 @@ function deleteMeal(id, array) {
 
 const mealApp = combineReducers({
   mealList,
-  visibilityAll,
-  mealSearchId,
+  //visibilityAll,
+  //mealSearchId,
 });
 
 export default mealApp;

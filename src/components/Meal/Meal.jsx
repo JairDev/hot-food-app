@@ -10,7 +10,7 @@ const Meal = ({ itemMeal, handleChange }) => {
 
   
   return (
-    <div className={`content-meal-style w-2/5 lg:w-w30`}>
+    <div className={`content-meal-style w-w45 lg:w-w30 mb-6`}>
       <div className="content-meal flex flex-col justify-between mb-8 relative h-full">
         <div className="img-meal relative z-50">
           <img className="w-full object-cover" src={itemMeal.strMealThumb} alt="name" />

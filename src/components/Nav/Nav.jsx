@@ -1,17 +1,10 @@
 import React from "react";
-import {
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
     <nav className="App-nav">
       <ul className="flex justify-around">
-        <li>
-        <div className="App-content-logo">
-          <div className="App-logo">Logo</div>
-        </div>
-        </li>
         <li>
           <Link to="/">Home</Link>
         </li>

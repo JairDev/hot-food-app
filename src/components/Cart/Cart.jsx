@@ -25,7 +25,7 @@ const Cart = ({ cartMeals, subTotal, onClick }) => {
   return (
     <>
       <Header />
-      <div className="content-meals-cart relative z-50 mt-16">
+      <div className="content-meals-cart relative z-50 mt-16 px-6 md:px-12">
         <div className="title-cart">
           <h1 className="text-4xl flex justify-center mb-12">Cart</h1>
         </div>
@@ -60,10 +60,12 @@ const Cart = ({ cartMeals, subTotal, onClick }) => {
 
 const mapStateToProps = (state) => {
   const { cartMeals } = state.mealList;
-  const sum = cartMeals.map(({ price, qty }) => {
-    const result = parseInt(qty) * parseInt(price)
-    return result
-  }).reduce((acc, current) => acc + current)
+  const sum = cartMeals
+    .map(({ price, qty }) => {
+      const result = parseInt(qty) * parseInt(price);
+      return result;
+    })
+    .reduce((acc, current) => acc + current, 0);
   return { cartMeals, subTotal: sum };
 };
 

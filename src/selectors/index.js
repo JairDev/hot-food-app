@@ -1,8 +1,8 @@
 import { createSelector } from "reselect";
 
 const meals = (state) => state.mealList.meals;
-const filterByPrice = (state) => state.visibilityAll;
-const getKeyword = (state) => state.mealSearchId;
+const filterByPrice = (state) => state.mealList.visibilityAll;
+const getKeyword = (state) => state.mealList.mealSearchId;
 
 function filterMeals(array, keyword) {
   return array.filter((meal) => {
@@ -14,9 +14,9 @@ function filterMeals(array, keyword) {
 export const getVisibleAllMeals = createSelector(
   [filterByPrice, meals],
   (filterPrice, allMeals) => {
-    console.log("fn")
     switch (filterPrice) {
       case "ALL":
+	console.log("selector", allMeals)
         return allMeals;
       case "LESS_150":
         return allMeals.filter((meal) => meal.price <= 150);
@@ -34,6 +34,7 @@ export const getVisibleByKeyword = createSelector(
     if (!keyword) {
       return visibleAllMeals;
     } else {
+      console.log("selector", keyword)
       return filterMeals(visibleAllMeals, keyword);
     }
   }
