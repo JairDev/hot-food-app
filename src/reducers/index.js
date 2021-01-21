@@ -20,7 +20,7 @@ const initialState = {
   cartMeals: cartArr,
   qty: 1,
   mealSearchId: null,
-  visibilityAll: "ALL"
+  visibilityAll: "ALL",
 };
 
 function mealList(state = initialState, action) {
@@ -51,11 +51,14 @@ function mealList(state = initialState, action) {
         ...state,
         cartMeals: deleteMeal(action.payload, state.cartMeals),
       };
-    case MEAL_SEARCH: 
-      console.log(action.payload)
-      return{...state, mealSearchId: action.payload, visibilityAll: null}
+    case MEAL_SEARCH:
+      console.log(action.payload);
+      return { ...state, mealSearchId: action.payload };
     case FILTER_BY_PRICE:
-      return {...state, visibilityAll: action.payload }
+      if (action.payload === "ALL") {
+        return { ...state, visibilityAll: action.payload, mealSearchId: null };
+      }
+      return { ...state, visibilityAll: action.payload };
     default:
       return state;
   }

@@ -16,7 +16,7 @@ export const getVisibleAllMeals = createSelector(
   (filterPrice, allMeals) => {
     switch (filterPrice) {
       case "ALL":
-	console.log("selector", allMeals)
+        console.log("all selector", allMeals);
         return allMeals;
       case "LESS_150":
         return allMeals.filter((meal) => meal.price <= 150);
@@ -29,14 +29,13 @@ export const getVisibleAllMeals = createSelector(
 );
 
 export const getVisibleByKeyword = createSelector(
-  [getVisibleAllMeals, getKeyword],
-  (visibleAllMeals, keyword) => {
-    if (!keyword) {
-      return visibleAllMeals;
-    } else {
-      console.log("selector", keyword)
+  [getVisibleAllMeals, getKeyword, filterByPrice],
+  (visibleAllMeals, keyword, filter) => {
+    console.log("selector", visibleAllMeals);
+    if (keyword) {
       return filterMeals(visibleAllMeals, keyword);
     }
+    console.log(filter)
+    return visibleAllMeals;
   }
 );
-

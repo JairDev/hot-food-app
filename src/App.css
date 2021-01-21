@@ -100,3 +100,7 @@ body {
 .style-cart .content-meal::before, .style-cart .content-meal::after {
   display: none;
 }
+
+.show {
+  display: block; 
+}

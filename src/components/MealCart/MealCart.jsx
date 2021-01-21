@@ -1,5 +1,4 @@
 import Price from "components/Price/Price"
-import useLocalStorage from "hooks/useLocalStorage";
 import React from "react"
 import { connect } from "react-redux"
 import { deleteCartMeal, updateQty } from "../../actions"
@@ -46,13 +45,10 @@ const mapDispatchToProps = (dispatch, ownProps) =>{
   return {
     onClick: (e) => {
       const id = e.target.dataset.id
-      e.preventDefault()
-      console.log(e)
       dispatch(deleteCartMeal(id))
+      e.preventDefault()
     },
     onChange: (e) => {
-      //console.log(e.target.value)
-      //console.log(ownProps)
       dispatch(updateQty(e.target.value, ownProps.itemMeal))
     }
   }

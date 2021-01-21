@@ -1,26 +1,31 @@
-const colors = require('tailwindcss/colors')
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    colors: {
+    backgroundColor: () => ({
       bodycolor: "#FBECCC",
-      textcolor: "#383B20",
       buttoncolor: "#648F54",
-      searchcolor: "#648F54"
-    },
+      cartBg: "#E74C3C",
+    }),
+    textcolor: () => ({
+      textPrimary: "#383B20",
+      textactioncolor: "#648F54",
+    }),
+
     extend: {
       height: {
-        "h5": "5vh",
-        "h30": "30vh"
+        h5: "5vh",
+        h30: "30vh",
+        "25px": "20px",
       },
       width: {
-	"w45": "45%"
+        w45: "45%",
+        "25px": "20px",
       },
       spacing: {
-        "w30": "30%"
-        
+        w30: "30%",
       },
     },
   },
@@ -28,4 +33,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}
+};

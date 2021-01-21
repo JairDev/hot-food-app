@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Nav = () => {
+const Nav = ({ cartMeals }) => {
   return (
     <nav className="App-nav">
       <ul className="flex justify-around">
@@ -11,10 +12,18 @@ const Nav = () => {
         <li>
           <div className="App-content-cart">
             <Link to="/cart">
-              <div className="App-cart">
-                <svg className="icon icon-cart">
-                  <use xlinkHref="#icon-cart"></use>
-                </svg>
+              <div className="content-cart-icon flex relative items-center">
+                <span
+                  
+                  className="cart-length text-xs absolute flex items-center justify-center -top-6 rounded-full w-25px h-25px bg-cartBg"
+                >
+                  {cartMeals.length}
+                </span>
+                <div className="App-cart">
+                  <svg className="icon icon-cart">
+                    <use xlinkHref="#icon-cart"></use>
+                  </svg>
+                </div>
               </div>
             </Link>
           </div>
@@ -24,4 +33,9 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+const mapStateToProps = (state) => {
+  const { cartMeals } = state.mealList;
+  return { cartMeals: cartMeals };
+};
+
+export default connect(mapStateToProps, null)(Nav);

@@ -2,20 +2,18 @@ import { fetchMeals } from "actions";
 import FilterPrice from "components/FilterPrice/FilterPrice";
 import MealsList from "components/MealsList/MealsList";
 import SearchBar from "components/SearchBar/SearchBar";
-import useLocalStorage from "hooks/useLocalStorage";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
-import { getVisibleAllMeals, getVisibleByKeyword } from "selectors";
-import getMeals from "services";
-import addToCart from "utils/addToCart";
-import data from "../../data-price/data-price.json";
+import { getVisibleByKeyword } from "selectors";
+
+const filterProps = ["ALL", "LESS_150", "GREATER_150"];
 
 const FilterableProducts = ({ dispatch, meals }) => {
-  const [storage, setStorage] = useLocalStorage();
-  console.log(meals)
+  const ref = useRef();
   useEffect(() => {
     dispatch(fetchMeals());
   }, [dispatch]);
+  console.log("render")
 
   return (
     <>
@@ -28,9 +26,13 @@ const FilterableProducts = ({ dispatch, meals }) => {
             Filter by
           </span>
         </div>
-        <FilterPrice filter="ALL">All</FilterPrice>
-        <FilterPrice filter="LESS_150">$80 - $150</FilterPrice>
-        <FilterPrice filter="GREATER_150">$150 - $316</FilterPrice>
+        {filterProps.map((item, i) => {
+          return (
+            <FilterPrice key={item} filter={item} ref={ref}>
+              {item}
+            </FilterPrice>
+          );
+        })}
       </section>
       <div className="content-meals-menu flex flex-wrap justify-between mt-16">
         <MealsList array={meals} id={"mealshome"} />

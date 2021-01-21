@@ -12,7 +12,7 @@ const SearchBar = ({ onSubmit }) => {
         ref={(node) => (input = node)}
         placeholder="Eg. Cake, tart ..."
       />
-      <button className="px-4 bg-searchcolor h-full">
+      <button className="px-4 bg-buttoncolor h-full">
         <svg className="icon icon-search">
           <use xlinkHref="#icon-search"></use>
         </svg>
@@ -31,5 +31,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const Search = connect(null, mapDispatchToProps)(SearchBar);
-export default Search;
+export default connect(null, mapDispatchToProps)(SearchBar);
+

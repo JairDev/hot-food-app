@@ -1,18 +1,15 @@
 import Button from "components/Button/Button";
 import Header from "components/Header/Header";
 import MealsList from "components/MealsList/MealsList";
-import useLocalStorage from "hooks/useLocalStorage";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { getAddToCart } from "selectors";
-import thisItemExist from "utils/thisItemExist";
 
 const classCartButton = "bg-buttoncolor w-full p-4 text-lg font-semibold";
 
-const Cart = ({ cartMeals, subTotal, onClick }) => {
+const Cart = ({ cartMeals, subTotal }) => {
   const tax = 10;
 
-  if (cartMeals.length === 0) {
+  if (!cartMeals.length) {
     return (
       <>
         <Header />
@@ -69,12 +66,4 @@ const mapStateToProps = (state) => {
   return { cartMeals, subTotal: sum };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    onClick: (e) => {
-      e.preventDefault();
-      console.log("delete");
-    },
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps)(Cart);
