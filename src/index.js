@@ -11,7 +11,6 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { logger } from "redux-logger";
 import { fetchMeals } from "./actions";
 import reducer from "./reducers";
-
 //const loggerMiddleware = createLogger()
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

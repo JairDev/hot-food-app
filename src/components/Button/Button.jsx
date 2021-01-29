@@ -2,12 +2,12 @@ import { addToCart } from "actions";
 import React from "react";
 import { connect } from "react-redux";
 
-const Button = ({ children, className, onClick, id, qty, meal }) => {
+const Button = ({ children, className, onClick, id, qty }) => {
   return (
     <div className="content-button">
       <form action="">
         <button
-          onClick={(e) => onClick(e, meal)}
+          onClick={onClick}
           data-id={id}
           data-qty={qty}
           className={`${className}`}
@@ -21,9 +21,9 @@ const Button = ({ children, className, onClick, id, qty, meal }) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onClick: (e, meal) => {
+    onClick: (e) => {
       e.preventDefault();
-      dispatch(addToCart(ownProps.id, meal));
+      dispatch(addToCart(ownProps.meal));
     },
   };
 };

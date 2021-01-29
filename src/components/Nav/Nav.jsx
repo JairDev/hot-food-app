@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Nav = ({ cartMeals }) => {
   return (
-    <nav className="App-nav">
+    <nav className="App-nav text-primary">
       <ul className="flex justify-around">
         <li>
           <Link to="/">Home</Link>
@@ -12,11 +12,8 @@ const Nav = ({ cartMeals }) => {
         <li>
           <div className="App-content-cart">
             <Link to="/cart">
-              <div className="content-cart-icon flex relative items-center">
-                <span
-                  
-                  className="cart-length text-xs absolute flex items-center justify-center -top-6 rounded-full w-25px h-25px bg-cartBg"
-                >
+              <div className="content-cart-icon flex relative items-center justify-center">
+                <span className="cart-length text-secondary font-semibold text-xs absolute flex items-center justify-center -top-3.5 p-2 rounded-full w-25px h-25px bg-cartBg">
                   {cartMeals.length}
                 </span>
                 <div className="App-cart">

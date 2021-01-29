@@ -1,17 +1,19 @@
-import All from "components/FilterableProducts/FilterableProducts";
 import FilterableProducts from "components/FilterableProducts/FilterableProducts";
 import Header from "components/Header/Header";
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { connect } from "react-redux";
 
-const Home = ({onCart}) => {
+const Home = () => {
   return (
     <>
-      <Header/>
+      <Header />
       <section className="App-menu p-4 lg:p-24">
         <div className="content-menu-title flex justify-center my-16 font-semibold relative">
-          <h2 className="menu-title text-4xl lg:text-6xl">Tasty Menu</h2>
+          <h2 className="menu-title text-primary text-4xl lg:text-6xl">
+            Tasty Desserts
+          </h2>
         </div>
-        <All/>
+        <FilterableProducts />
       </section>
     </>
   );

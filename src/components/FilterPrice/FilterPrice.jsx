@@ -1,44 +1,43 @@
 import { filterByPrice } from "actions";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 
-const FilterPrice = React.forwardRef(({ onClick, children }, ref) => {
-  useEffect(() => {
-    console.log(ref);
-  }, []);
+const FilterPrice = ({ onClick, children, forwardRef, tag }) => {
   return (
     <div className="content-filter-price">
       <form action="">
         <div className="meals-price">
-          <label htmlFor="">
-            <input ref={ref} onClick={onClick} type="checkbox" id="price" />
-            <span className="span-80-150 ml-4 text-lg line-through">
-              {children}
-            </span>
+          <label htmlFor={tag}>
+            <input
+              ref={forwardRef}
+              onClick={onClick}
+              type="checkbox"
+              id={tag}
+            />
+            <span className="span-80-150 ml-4 text-base cursor-pointer">{children}</span>
           </label>
         </div>
       </form>
     </div>
   );
-});
-
-const mapStateToProps = (state) => {
-  // console.log("link state", state)
-  return state;
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: (e) => {
-      //e.target.checked ? dispatch(filterByPrice(ownProps.filter)) : dispatch(filterByPrice("ALL"))
       dispatch(filterByPrice(ownProps.filter));
-      console.log(e.target);
-      console.log(ownProps);
+      ownProps.arr.map((item) => {
+          if (item.checked && item.style.pointerEvents === "none") {
+            item.nextSibling.style = "text-decoration: none";
+            item.style = "pointer-events: auto";
+            item.nextSibling.style = "pointer-events: auto";
+            item.checked = false;
+          }
+        });
+      e.target.nextSibling.style =
+        "text-decoration: line-through; color: grey;";
+      e.target.style = "pointer-events: none";
     },
   };
 };
-const Link = connect(null, mapDispatchToProps, null, { forwardRef: true })(
-  FilterPrice
-);
-
-export default Link;
+export default connect(null, mapDispatchToProps, null)(FilterPrice);

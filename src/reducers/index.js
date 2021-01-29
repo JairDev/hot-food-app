@@ -10,6 +10,7 @@ import {
   DELETE_MEAL,
   QUANTITY,
   UPDATE_QTY,
+  PAGINATION,
 } from "../actions";
 
 const cartArr = JSON.parse(localStorage.getItem("meals")) || [];
@@ -17,10 +18,13 @@ const cartArr = JSON.parse(localStorage.getItem("meals")) || [];
 const initialState = {
   isFetching: false,
   meals: [],
+  sliceMeals: [],
   cartMeals: cartArr,
   qty: 1,
   mealSearchId: null,
   visibilityAll: "ALL",
+  page: 0,
+  numberPerPage: 3,
 };
 
 function mealList(state = initialState, action) {
@@ -28,8 +32,21 @@ function mealList(state = initialState, action) {
     case REQUEST_MEALS:
       return { ...state, isFetching: true };
     case RECEIVE_MEALS:
-      return { ...state, isFetching: false, meals: action.payload };
+      return {
+        ...state,
+        isFetching: false,
+        page: state.page + 1,
+        meals: action.payload,
+        sliceMeals: sliceArr(action.payload, state.page, state.numberPerPage)
+      };
+    case PAGINATION:
+      return {
+        ...state,
+        page: state.page + 1,
+        sliceMeals: state.sliceMeals.concat(sliceArr(state.meals, state.page, state.numberPerPage)),
+      };
     case ADD_TO_CART:
+      console.log("action", action.payload)
       return {
         ...state,
         cartMeals: setCart(state.cartMeals, action.payload, state.qty),
@@ -52,7 +69,6 @@ function mealList(state = initialState, action) {
         cartMeals: deleteMeal(action.payload, state.cartMeals),
       };
     case MEAL_SEARCH:
-      console.log(action.payload);
       return { ...state, mealSearchId: action.payload };
     case FILTER_BY_PRICE:
       if (action.payload === "ALL") {
@@ -62,6 +78,15 @@ function mealList(state = initialState, action) {
     default:
       return state;
   }
+}
+
+function sliceArr(arr, page, numberPerPage) {
+  const start = numberPerPage * page;
+  const end = numberPerPage + start;
+  console.log(start, end);
+  const nArr = arr.slice(start, end)
+  console.log(nArr)
+  return nArr
 }
 
 function setCart(cart, item, qty) {

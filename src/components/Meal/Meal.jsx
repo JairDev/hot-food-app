@@ -8,7 +8,7 @@ const classMealButton = "text-base font-semibold";
 
 const Meal = ({ itemMeal, handleChange }) => {
   return (
-    <div className={`content-meal-style w-w45 lg:w-w30 mb-6`}>
+    <div className={`content-meal-style w-w80 md:w-w45 lg:w-w30 mb-6`}>
       <div className="content-meal flex flex-col justify-between mb-8 relative h-full">
         <div className="img-meal relative z-50">
           <img
@@ -19,9 +19,9 @@ const Meal = ({ itemMeal, handleChange }) => {
         </div>
         <div className="content-meal-all flex flex-col justify-between pt-4 pr-4 pb-12 pl-4">
           <div className="meal-description mb-4 relative z-40">
-            <h3 className="text-lg font-semibold">{itemMeal.strMeal}</h3>
+            <h3 className="text-lg font-semibold text-primary">{itemMeal.strMeal}</h3>
           </div>
-          <div className="content-price-qty flex justify-between w-full relative z-50">
+          <div className="content-price-qty text-primary flex justify-between w-full relative z-50">
             <SelectOption onChange={handleChange} />
             <Price children={itemMeal.price} />
           </div>
