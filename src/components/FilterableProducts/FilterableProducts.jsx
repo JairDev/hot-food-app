@@ -5,6 +5,7 @@ import SearchBar from "components/SearchBar/SearchBar";
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { getVisibleByKeyword } from "selectors";
+import { nearScreen } from "utils/nearScreen";
 
 const filterProps = [
   { action: "ALL", label: "ALL" },
@@ -12,19 +13,24 @@ const filterProps = [
   { action: "GREATER_150", label: "$150 - $316" },
 ];
 
-const FilterableProducts = ({ callApi, meals, callObserver, callObserverHeader }) => {
+const FilterableProducts = ({
+  callApi,
+  meals,
+  callObserver,
+  callObserverHeader,
+}) => {
   const ref = useRef([]);
   const refObserver = useRef(null);
-  const refForHeader = useRef(null)
+  const refForHeader = useRef(null);
 
   useEffect(() => {
-    if(!meals.length) {
+    if (!meals.length) {
       callApi();
     }
-    console.log("effect home")
+    console.log("effect home");
     callObserver(refObserver.current);
-    callObserverHeader(refForHeader.current)
-  }, [callApi, callObserver, callObserverHeader ]);
+    callObserverHeader(refForHeader.current);
+  }, [callApi, callObserver, callObserverHeader]);
 
   return (
     <>
@@ -52,9 +58,9 @@ const FilterableProducts = ({ callApi, meals, callObserver, callObserverHeader }
             );
           })}
         </div>
-      <div className="content-meals-menu flex lg:flex-1 flex-wrap flex-col items-center md:flex-row justify-between mt-16">
-        <MealsList array={meals} id={"mealshome"} />
-      </div>
+        <div className="content-meals-menu flex lg:flex-1 flex-wrap flex-col items-center md:flex-row justify-between mt-16">
+          <MealsList array={meals} id={"mealshome"} />
+        </div>
       </section>
       <div className="observer" ref={refObserver}></div>
     </>
@@ -70,44 +76,20 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     callObserver: (ref) => {
-      // const img = document.querySelectorAll(".content-meal")
       const options = {
         root: null,
-        rootMargin: "0px 0px 0px 0px"
-      }
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entrie) => {
-          console.log(entrie)
-          if (entrie.isIntersecting) {
-            console.log(entrie.isIntersecting);
-            console.log(entrie)
-            dispatch(nextPage());
-          }
-        });
-      }, options);
-      observer.observe(ref);
-      // img.forEach(item => observer.observe(item))
+        rootMargin: "0px 0px 0px 0px",
+      };
+      nearScreen(options, ref, dispatch, nextPage);
     },
     callApi: () => dispatch(fetchMeals()),
     callObserverHeader: (ref) => {
-      const header = document.querySelector(".content-header")
       const options = {
         root: null,
-        rootMargin: "0px 0px -600px 0px"
-      }
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entrie) => {
-          if (entrie.isIntersecting) {
-            header.classList.add("bg-bodycolor")
-            header.classList.add("shadow-md")
-          }else {
-            header.classList.remove("bg-bodycolor")
-            header.classList.remove("shadow-md")
-          }
-        });
-      }, options);
-      observer.observe(ref);
-    }
+        rootMargin: "0px 0px -600px 0px",
+      };
+      nearScreen(options, ref);
+    },
   };
 };
 

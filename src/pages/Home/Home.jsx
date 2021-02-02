@@ -8,8 +8,8 @@ const Home = () => {
     <>
       <Header />
       <section className="App-menu p-4 lg:p-24">
-        <div className="content-menu-title flex justify-center my-16 font-semibold relative">
-          <h2 className="menu-title text-primary text-4xl lg:text-6xl">
+        <div className="content-menu-title flex justify-center my-16 relative">
+          <h2 className="menu-title text-primary text-4xl lg:text-6xl font-semibold">
             Tasty Desserts
           </h2>
         </div>

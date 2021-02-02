@@ -23,52 +23,27 @@ export function receiveMeals(json) {
   };
 }
 
-export function filterByPrice(filter) {
-  return {
-    type: FILTER_BY_PRICE,
-    payload: filter,
+function makeActionCreator(type, ...argNames) {
+  return function (...args) {
+    const action = { type };
+    argNames.forEach((arg, index) => {
+      action[argNames[index]] = args[index];
+    });
+    return action;
   };
 }
 
-export function mealSearch(searchText) {
-  return {
-    type: MEAL_SEARCH,
-    payload: searchText,
-  };
-}
-
-export function addToCart(mealObj) {
-  return {
-    type: ADD_TO_CART,
-    payload: mealObj,
-  };
-}
-
-export function deleteCartMeal(id) {
-  return {
-    type: DELETE_MEAL,
-    payload: id,
-  };
-}
-
-export function setQty(qty) {
-  return {
-    type: QUANTITY,
-    payload: qty,
-  };
-}
-
-export function updateQty(qty, item) {
-  return {
-    type: UPDATE_QTY,
-    payload: { qty, item },
-  };
-}
+export const setQty = makeActionCreator(QUANTITY, "qty", "id");
+export const addToCart = makeActionCreator(ADD_TO_CART, "mealObj");
+export const updateQty = makeActionCreator(UPDATE_QTY, "qty", "id");
+export const deleteCartMeal = makeActionCreator(DELETE_MEAL, "id");
+export const filterByPrice = makeActionCreator(FILTER_BY_PRICE, "filter");
+export const mealSearch = makeActionCreator(MEAL_SEARCH, "searchText");
 
 export function nextPage() {
   return {
     type: PAGINATION,
-  }
+  };
 }
 
 // He aqui nuestro primer creador thunk action!

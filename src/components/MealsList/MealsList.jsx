@@ -2,29 +2,12 @@ import React from "react";
 import Meal from "components/Meal/Meal";
 import MealCart from "components/MealCart/MealCart";
 
-const MealsList = ({ array, onClick, onChange, classCart, id, onRemove}) => {
-  // console.log(array)
+const MealsList = ({ array, id }) => {
   if (id === "mealshome") {
-    return array.map((meal) => (
-      <Meal
-        key={meal.strMeal}
-        itemMeal={meal}
-        
-      />
-    ));
+    return array.map((meal) => <Meal key={meal.strMeal} itemMeal={meal} />);
   } else {
     return array.map((meal) => (
-      <MealCart
-        key={meal.strMeal}
-        name={meal.strMeal}
-        mealSrc={meal.strMealThumb}
-        price={meal.price}
-        qty={meal.qty}
-        classCart={classCart}
-        onChange={onChange}
-        id={meal.idMeal}
-        itemMeal={meal}
-      />
+      <MealCart key={meal.strMeal} id={meal.idMeal} itemMeal={meal} />
     ));
   }
 };

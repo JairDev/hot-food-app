@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Nav = ({ cartMeals }) => {
+  console.log(cartMeals)
   return (
     <nav className="App-nav text-primary">
       <ul className="flex justify-around">
@@ -31,8 +32,8 @@ const Nav = ({ cartMeals }) => {
 };
 
 const mapStateToProps = (state) => {
-  const { cartMeals } = state.mealList;
-  return { cartMeals: cartMeals };
+  const { cartMeals } = state;
+  return { cartMeals };
 };
 
 export default connect(mapStateToProps, null)(Nav);

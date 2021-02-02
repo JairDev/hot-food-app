@@ -39,10 +39,12 @@ const Meal = ({ itemMeal, handleChange }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     handleChange: (e) => {
-      dispatch(setQty(e.target.value));
+      const { idMeal } = ownProps.itemMeal
+      console.log(idMeal)
+      dispatch(setQty(e.target.value, idMeal));
     },
   };
 };

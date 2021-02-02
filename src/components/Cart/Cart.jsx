@@ -22,9 +22,9 @@ const Cart = ({ cartMeals, subTotal }) => {
   return (
     <>
       <Header />
-      <div className="content-meals-cart relative z-50 mt-16 px-6 md:px-12">
+      <div className="content-meals-cart relative z-50 mt-16 p-4">
         <div className="title-cart">
-          <h1 className="text-4xl flex justify-center mb-12">Cart</h1>
+          <h2 className="text-primary text-4xl lg:text-6xl font-semibold flex justify-center mb-12">Cart</h2>
         </div>
         <div className="meals-cart">
           <MealsList
@@ -56,7 +56,7 @@ const Cart = ({ cartMeals, subTotal }) => {
 };
 
 const mapStateToProps = (state) => {
-  const { cartMeals } = state.mealList;
+  const { cartMeals } = state;
   const sum = cartMeals
     .map(({ price, qty }) => {
       const result = parseInt(qty) * parseInt(price);

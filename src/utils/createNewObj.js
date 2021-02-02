@@ -3,7 +3,7 @@ function createNewObj(item, qty) {
     {},
     {
       ...item,
-      qty,
+      
     }
   );
   return obj;

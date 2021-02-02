@@ -23,6 +23,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: (e) => {
       e.preventDefault();
+      console.log("props button", ownProps.meal)
       dispatch(addToCart(ownProps.meal));
     },
   };

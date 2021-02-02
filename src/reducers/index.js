@@ -19,8 +19,6 @@ const initialState = {
   isFetching: false,
   meals: [],
   sliceMeals: [],
-  cartMeals: cartArr,
-  qty: 1,
   mealSearchId: null,
   visibilityAll: "ALL",
   page: 0,
@@ -37,44 +35,47 @@ function mealList(state = initialState, action) {
         isFetching: false,
         page: state.page + 1,
         meals: action.payload,
-        sliceMeals: sliceArr(action.payload, state.page, state.numberPerPage)
+        sliceMeals: sliceArr(action.payload, state.page, state.numberPerPage),
       };
     case PAGINATION:
       return {
         ...state,
         page: state.page + 1,
-        sliceMeals: state.sliceMeals.concat(sliceArr(state.meals, state.page, state.numberPerPage)),
-      };
-    case ADD_TO_CART:
-      console.log("action", action.payload)
-      return {
-        ...state,
-        cartMeals: setCart(state.cartMeals, action.payload, state.qty),
+        sliceMeals: state.sliceMeals.concat(
+          sliceArr(state.meals, state.page, state.numberPerPage)
+        ),
       };
     case QUANTITY:
-      return { ...state, qty: action.payload };
+      console.log(action);
+      const meal = state.sliceMeals.map((meal) =>
+        meal.idMeal === action.id ? { ...meal, qty: action.qty } : meal
+      );
+      return { ...state, sliceMeals: [...meal] };
     case UPDATE_QTY:
-      const item = action.payload.item;
-      const qty = action.payload.qty;
-      const id = action.payload.item.strMeal;
-      const findIdx = findIndex(state.cartMeals, "strMeal", id);
-      const copyArrCart = [...state.cartMeals];
-      const obj = createNewObj(item, qty);
-      copyArrCart.splice(findIdx, 1, obj);
-      localStorage.setItem("meals", JSON.stringify(copyArrCart));
-      return { ...state, cartMeals: copyArrCart };
-    case DELETE_MEAL:
-      return {
-        ...state,
-        cartMeals: deleteMeal(action.payload, state.cartMeals),
-      };
+      const newArr = state.cartMeals.map((ele) =>
+        ele.idMeal === action.id ? { ...ele, qty: action.qty } : ele
+      );
+      localStorage.setItem("meals", JSON.stringify(newArr));
+      return { ...state, cartMeals: newArr };
     case MEAL_SEARCH:
-      return { ...state, mealSearchId: action.payload };
+      return { ...state, mealSearchId: action.searchText };
     case FILTER_BY_PRICE:
       if (action.payload === "ALL") {
-        return { ...state, visibilityAll: action.payload, mealSearchId: null };
+        return { ...state, visibilityAll: action.filter, mealSearchId: null };
       }
-      return { ...state, visibilityAll: action.payload };
+      return { ...state, visibilityAll: action.filter };
+    default:
+      return state;
+  }
+}
+
+function cartMeals(state = cartArr, action) {
+  switch (action.type) {
+    case ADD_TO_CART:
+      return setCart(state, action.mealObj);
+    case DELETE_MEAL:
+      console.log(state);
+      return deleteMeal(action.id, state);
     default:
       return state;
   }
@@ -83,15 +84,13 @@ function mealList(state = initialState, action) {
 function sliceArr(arr, page, numberPerPage) {
   const start = numberPerPage * page;
   const end = numberPerPage + start;
-  console.log(start, end);
-  const nArr = arr.slice(start, end)
-  console.log(nArr)
-  return nArr
+  const copyCart = arr.slice(start, end);
+  return copyCart;
 }
 
 function setCart(cart, item, qty) {
   const copyCart = [...cart];
-  const obj = createNewObj(item, qty);
+  const obj = createNewObj(item);
   const itemExist = exist(copyCart, obj);
   localStorage.setItem("meals", JSON.stringify(itemExist));
   return itemExist;
@@ -120,7 +119,8 @@ function exist(arr, item) {
   const findIdx = findIndex(arr, "strMeal", id);
 
   if (findIdx === -1) {
-    localStorage.setItem("meals", JSON.stringify([...arr, item]));
+    const pushItem = [...arr, item];
+    setLocal(pushItem);
     return [...arr, item];
   } else {
     return arr;
@@ -128,15 +128,20 @@ function exist(arr, item) {
 }
 
 function deleteMeal(id, array) {
-  const resultDelete = array.filter((meal) => meal.strMeal !== id);
-  localStorage.setItem("meals", JSON.stringify(resultDelete));
-  return resultDelete;
+  const deleteResult = array.filter((meal) => meal.strMeal !== id);
+  localStorage.setItem("meals", JSON.stringify(deleteResult));
+  return deleteResult;
+}
+
+function setLocal(item) {
+  return localStorage.setItem("meals", JSON.stringify(item));
 }
 
 const mealApp = combineReducers({
   mealList,
   //visibilityAll,
   //mealSearchId,
+  cartMeals,
 });
 
 export default mealApp;
