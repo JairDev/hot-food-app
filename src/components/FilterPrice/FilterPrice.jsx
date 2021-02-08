@@ -1,5 +1,5 @@
 import { filterByPrice } from "actions";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
 const FilterPrice = ({ onClick, children, forwardRef, tag }) => {
@@ -14,7 +14,9 @@ const FilterPrice = ({ onClick, children, forwardRef, tag }) => {
               type="checkbox"
               id={tag}
             />
-            <span className="span-80-150 ml-4 text-base cursor-pointer">{children}</span>
+            <span className="span-80-150 ml-4 text-base cursor-pointer">
+              {children}
+            </span>
           </label>
         </div>
       </form>
@@ -27,17 +29,17 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onClick: (e) => {
       dispatch(filterByPrice(ownProps.filter));
       ownProps.arr.map((item) => {
-          if (item.checked && item.style.pointerEvents === "none") {
-            item.nextSibling.style = "text-decoration: none";
-            item.style = "pointer-events: auto";
-            item.nextSibling.style = "pointer-events: auto";
-            item.checked = false;
-          }
-        });
+        if (item.checked && item.style.pointerEvents === "none") {
+          item.nextSibling.style = "text-decoration: none";
+          item.style = "pointer-events: auto";
+          item.nextSibling.style = "pointer-events: auto";
+          item.checked = false;
+        }
+      });
       e.target.nextSibling.style =
         "text-decoration: line-through; color: grey;";
       e.target.style = "pointer-events: none";
     },
   };
 };
-export default connect(null, mapDispatchToProps, null)(FilterPrice);
+export default connect(null, mapDispatchToProps)(FilterPrice);

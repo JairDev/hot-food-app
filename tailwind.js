@@ -8,11 +8,14 @@ module.exports = {
       bodycolor: "#FBECCC",
       buttoncolor: "#648F54",
       cartBg: "#E74C3C",
+      bgSelect: "transparent"
     }),
     textColor: {
       primary: "#383B20",
       textactioncolor: "#648F54",
-      secondary: "#FBECCC"
+      secondary: "#FBECCC",
+      deletetext: "#E74C3C",
+      coloradd: "#E9AC2E"
     },
     extend: {
       height: {

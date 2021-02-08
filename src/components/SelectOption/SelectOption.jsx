@@ -1,10 +1,10 @@
-import React from "react"
+import React from "react";
 
-const SelectOption = ({onChange}) => {
+const SelectOption = ({ onChange, value }) => {
   return (
-    <div className="content-qty">
+    <div className="content-qty ml-2">
       <form action="">
-        <select onChange={onChange} name="" id="">
+        <select className="bg-bgSelect font-semibold" onChange={onChange} name="" id="" value={value}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -13,7 +13,7 @@ const SelectOption = ({onChange}) => {
         </select>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default SelectOption
+export default SelectOption;

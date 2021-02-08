@@ -2126,6 +2126,10 @@ video {
   background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
 }
 
+.bg-bgSelect {
+  background-color: transparent;
+}
+
 .group:hover .group-hover\:bg-bodycolor {
   --tw-bg-opacity: 1;
   background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -2139,6 +2143,10 @@ video {
 .group:hover .group-hover\:bg-cartBg {
   --tw-bg-opacity: 1;
   background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
+}
+
+.group:hover .group-hover\:bg-bgSelect {
+  background-color: transparent;
 }
 
 .focus-within\:bg-bodycolor:focus-within {
@@ -2156,6 +2164,10 @@ video {
   background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
 }
 
+.focus-within\:bg-bgSelect:focus-within {
+  background-color: transparent;
+}
+
 .hover\:bg-bodycolor:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -2171,6 +2183,10 @@ video {
   background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
 }
 
+.hover\:bg-bgSelect:hover {
+  background-color: transparent;
+}
+
 .focus\:bg-bodycolor:focus {
   --tw-bg-opacity: 1;
   background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -2184,6 +2200,10 @@ video {
 .focus\:bg-cartBg:focus {
   --tw-bg-opacity: 1;
   background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
+}
+
+.focus\:bg-bgSelect:focus {
+  background-color: transparent;
 }
 
 .bg-none {
@@ -20409,6 +20429,16 @@ video {
   color: rgba(251, 236, 204, var(--tw-text-opacity));
 }
 
+.text-deletetext {
+  --tw-text-opacity: 1;
+  color: rgba(231, 76, 60, var(--tw-text-opacity));
+}
+
+.text-coloradd {
+  --tw-text-opacity: 1;
+  color: rgba(233, 172, 46, var(--tw-text-opacity));
+}
+
 .group:hover .group-hover\:text-primary {
   --tw-text-opacity: 1;
   color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -20422,6 +20452,16 @@ video {
 .group:hover .group-hover\:text-secondary {
   --tw-text-opacity: 1;
   color: rgba(251, 236, 204, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:text-deletetext {
+  --tw-text-opacity: 1;
+  color: rgba(231, 76, 60, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:text-coloradd {
+  --tw-text-opacity: 1;
+  color: rgba(233, 172, 46, var(--tw-text-opacity));
 }
 
 .focus-within\:text-primary:focus-within {
@@ -20439,6 +20479,16 @@ video {
   color: rgba(251, 236, 204, var(--tw-text-opacity));
 }
 
+.focus-within\:text-deletetext:focus-within {
+  --tw-text-opacity: 1;
+  color: rgba(231, 76, 60, var(--tw-text-opacity));
+}
+
+.focus-within\:text-coloradd:focus-within {
+  --tw-text-opacity: 1;
+  color: rgba(233, 172, 46, var(--tw-text-opacity));
+}
+
 .hover\:text-primary:hover {
   --tw-text-opacity: 1;
   color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -20454,6 +20504,16 @@ video {
   color: rgba(251, 236, 204, var(--tw-text-opacity));
 }
 
+.hover\:text-deletetext:hover {
+  --tw-text-opacity: 1;
+  color: rgba(231, 76, 60, var(--tw-text-opacity));
+}
+
+.hover\:text-coloradd:hover {
+  --tw-text-opacity: 1;
+  color: rgba(233, 172, 46, var(--tw-text-opacity));
+}
+
 .focus\:text-primary:focus {
   --tw-text-opacity: 1;
   color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -20467,6 +20527,16 @@ video {
 .focus\:text-secondary:focus {
   --tw-text-opacity: 1;
   color: rgba(251, 236, 204, var(--tw-text-opacity));
+}
+
+.focus\:text-deletetext:focus {
+  --tw-text-opacity: 1;
+  color: rgba(231, 76, 60, var(--tw-text-opacity));
+}
+
+.focus\:text-coloradd:focus {
+  --tw-text-opacity: 1;
+  color: rgba(233, 172, 46, var(--tw-text-opacity));
 }
 
 .text-opacity-0 {
@@ -26977,6 +27047,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .sm\:bg-bgSelect {
+    background-color: transparent;
+  }
+
   .group:hover .sm\:group-hover\:bg-bodycolor {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -26990,6 +27064,10 @@ video {
   .group:hover .sm\:group-hover\:bg-cartBg {
     --tw-bg-opacity: 1;
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
+  }
+
+  .group:hover .sm\:group-hover\:bg-bgSelect {
+    background-color: transparent;
   }
 
   .sm\:focus-within\:bg-bodycolor:focus-within {
@@ -27007,6 +27085,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .sm\:focus-within\:bg-bgSelect:focus-within {
+    background-color: transparent;
+  }
+
   .sm\:hover\:bg-bodycolor:hover {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -27022,6 +27104,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .sm\:hover\:bg-bgSelect:hover {
+    background-color: transparent;
+  }
+
   .sm\:focus\:bg-bodycolor:focus {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -27035,6 +27121,10 @@ video {
   .sm\:focus\:bg-cartBg:focus {
     --tw-bg-opacity: 1;
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
+  }
+
+  .sm\:focus\:bg-bgSelect:focus {
+    background-color: transparent;
   }
 
   .sm\:bg-none {
@@ -45247,6 +45337,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .sm\:text-deletetext {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .sm\:text-coloradd {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .group:hover .sm\:group-hover\:text-primary {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -45260,6 +45360,16 @@ video {
   .group:hover .sm\:group-hover\:text-secondary {
     --tw-text-opacity: 1;
     color: rgba(251, 236, 204, var(--tw-text-opacity));
+  }
+
+  .group:hover .sm\:group-hover\:text-deletetext {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .group:hover .sm\:group-hover\:text-coloradd {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
   }
 
   .sm\:focus-within\:text-primary:focus-within {
@@ -45277,6 +45387,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .sm\:focus-within\:text-deletetext:focus-within {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .sm\:focus-within\:text-coloradd:focus-within {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .sm\:hover\:text-primary:hover {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -45292,6 +45412,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .sm\:hover\:text-deletetext:hover {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .sm\:hover\:text-coloradd:hover {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .sm\:focus\:text-primary:focus {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -45305,6 +45435,16 @@ video {
   .sm\:focus\:text-secondary:focus {
     --tw-text-opacity: 1;
     color: rgba(251, 236, 204, var(--tw-text-opacity));
+  }
+
+  .sm\:focus\:text-deletetext:focus {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .sm\:focus\:text-coloradd:focus {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
   }
 
   .sm\:text-opacity-0 {
@@ -51785,6 +51925,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .md\:bg-bgSelect {
+    background-color: transparent;
+  }
+
   .group:hover .md\:group-hover\:bg-bodycolor {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -51798,6 +51942,10 @@ video {
   .group:hover .md\:group-hover\:bg-cartBg {
     --tw-bg-opacity: 1;
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
+  }
+
+  .group:hover .md\:group-hover\:bg-bgSelect {
+    background-color: transparent;
   }
 
   .md\:focus-within\:bg-bodycolor:focus-within {
@@ -51815,6 +51963,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .md\:focus-within\:bg-bgSelect:focus-within {
+    background-color: transparent;
+  }
+
   .md\:hover\:bg-bodycolor:hover {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -51830,6 +51982,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .md\:hover\:bg-bgSelect:hover {
+    background-color: transparent;
+  }
+
   .md\:focus\:bg-bodycolor:focus {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -51843,6 +51999,10 @@ video {
   .md\:focus\:bg-cartBg:focus {
     --tw-bg-opacity: 1;
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
+  }
+
+  .md\:focus\:bg-bgSelect:focus {
+    background-color: transparent;
   }
 
   .md\:bg-none {
@@ -70055,6 +70215,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .md\:text-deletetext {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .md\:text-coloradd {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .group:hover .md\:group-hover\:text-primary {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -70068,6 +70238,16 @@ video {
   .group:hover .md\:group-hover\:text-secondary {
     --tw-text-opacity: 1;
     color: rgba(251, 236, 204, var(--tw-text-opacity));
+  }
+
+  .group:hover .md\:group-hover\:text-deletetext {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .group:hover .md\:group-hover\:text-coloradd {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
   }
 
   .md\:focus-within\:text-primary:focus-within {
@@ -70085,6 +70265,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .md\:focus-within\:text-deletetext:focus-within {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .md\:focus-within\:text-coloradd:focus-within {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .md\:hover\:text-primary:hover {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -70100,6 +70290,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .md\:hover\:text-deletetext:hover {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .md\:hover\:text-coloradd:hover {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .md\:focus\:text-primary:focus {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -70113,6 +70313,16 @@ video {
   .md\:focus\:text-secondary:focus {
     --tw-text-opacity: 1;
     color: rgba(251, 236, 204, var(--tw-text-opacity));
+  }
+
+  .md\:focus\:text-deletetext:focus {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .md\:focus\:text-coloradd:focus {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
   }
 
   .md\:text-opacity-0 {
@@ -76593,6 +76803,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .lg\:bg-bgSelect {
+    background-color: transparent;
+  }
+
   .group:hover .lg\:group-hover\:bg-bodycolor {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -76606,6 +76820,10 @@ video {
   .group:hover .lg\:group-hover\:bg-cartBg {
     --tw-bg-opacity: 1;
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
+  }
+
+  .group:hover .lg\:group-hover\:bg-bgSelect {
+    background-color: transparent;
   }
 
   .lg\:focus-within\:bg-bodycolor:focus-within {
@@ -76623,6 +76841,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .lg\:focus-within\:bg-bgSelect:focus-within {
+    background-color: transparent;
+  }
+
   .lg\:hover\:bg-bodycolor:hover {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -76638,6 +76860,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .lg\:hover\:bg-bgSelect:hover {
+    background-color: transparent;
+  }
+
   .lg\:focus\:bg-bodycolor:focus {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -76651,6 +76877,10 @@ video {
   .lg\:focus\:bg-cartBg:focus {
     --tw-bg-opacity: 1;
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
+  }
+
+  .lg\:focus\:bg-bgSelect:focus {
+    background-color: transparent;
   }
 
   .lg\:bg-none {
@@ -94863,6 +95093,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .lg\:text-deletetext {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .lg\:text-coloradd {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .group:hover .lg\:group-hover\:text-primary {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -94876,6 +95116,16 @@ video {
   .group:hover .lg\:group-hover\:text-secondary {
     --tw-text-opacity: 1;
     color: rgba(251, 236, 204, var(--tw-text-opacity));
+  }
+
+  .group:hover .lg\:group-hover\:text-deletetext {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .group:hover .lg\:group-hover\:text-coloradd {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
   }
 
   .lg\:focus-within\:text-primary:focus-within {
@@ -94893,6 +95143,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .lg\:focus-within\:text-deletetext:focus-within {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .lg\:focus-within\:text-coloradd:focus-within {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .lg\:hover\:text-primary:hover {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -94908,6 +95168,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .lg\:hover\:text-deletetext:hover {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .lg\:hover\:text-coloradd:hover {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .lg\:focus\:text-primary:focus {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -94921,6 +95191,16 @@ video {
   .lg\:focus\:text-secondary:focus {
     --tw-text-opacity: 1;
     color: rgba(251, 236, 204, var(--tw-text-opacity));
+  }
+
+  .lg\:focus\:text-deletetext:focus {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .lg\:focus\:text-coloradd:focus {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
   }
 
   .lg\:text-opacity-0 {
@@ -101401,6 +101681,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .xl\:bg-bgSelect {
+    background-color: transparent;
+  }
+
   .group:hover .xl\:group-hover\:bg-bodycolor {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -101414,6 +101698,10 @@ video {
   .group:hover .xl\:group-hover\:bg-cartBg {
     --tw-bg-opacity: 1;
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
+  }
+
+  .group:hover .xl\:group-hover\:bg-bgSelect {
+    background-color: transparent;
   }
 
   .xl\:focus-within\:bg-bodycolor:focus-within {
@@ -101431,6 +101719,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .xl\:focus-within\:bg-bgSelect:focus-within {
+    background-color: transparent;
+  }
+
   .xl\:hover\:bg-bodycolor:hover {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -101446,6 +101738,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .xl\:hover\:bg-bgSelect:hover {
+    background-color: transparent;
+  }
+
   .xl\:focus\:bg-bodycolor:focus {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -101459,6 +101755,10 @@ video {
   .xl\:focus\:bg-cartBg:focus {
     --tw-bg-opacity: 1;
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
+  }
+
+  .xl\:focus\:bg-bgSelect:focus {
+    background-color: transparent;
   }
 
   .xl\:bg-none {
@@ -119671,6 +119971,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .xl\:text-deletetext {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .xl\:text-coloradd {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .group:hover .xl\:group-hover\:text-primary {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -119684,6 +119994,16 @@ video {
   .group:hover .xl\:group-hover\:text-secondary {
     --tw-text-opacity: 1;
     color: rgba(251, 236, 204, var(--tw-text-opacity));
+  }
+
+  .group:hover .xl\:group-hover\:text-deletetext {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .group:hover .xl\:group-hover\:text-coloradd {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
   }
 
   .xl\:focus-within\:text-primary:focus-within {
@@ -119701,6 +120021,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .xl\:focus-within\:text-deletetext:focus-within {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .xl\:focus-within\:text-coloradd:focus-within {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .xl\:hover\:text-primary:hover {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -119716,6 +120046,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .xl\:hover\:text-deletetext:hover {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .xl\:hover\:text-coloradd:hover {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .xl\:focus\:text-primary:focus {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -119729,6 +120069,16 @@ video {
   .xl\:focus\:text-secondary:focus {
     --tw-text-opacity: 1;
     color: rgba(251, 236, 204, var(--tw-text-opacity));
+  }
+
+  .xl\:focus\:text-deletetext:focus {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .xl\:focus\:text-coloradd:focus {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
   }
 
   .xl\:text-opacity-0 {
@@ -126209,6 +126559,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .\32xl\:bg-bgSelect {
+    background-color: transparent;
+  }
+
   .group:hover .\32xl\:group-hover\:bg-bodycolor {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -126222,6 +126576,10 @@ video {
   .group:hover .\32xl\:group-hover\:bg-cartBg {
     --tw-bg-opacity: 1;
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
+  }
+
+  .group:hover .\32xl\:group-hover\:bg-bgSelect {
+    background-color: transparent;
   }
 
   .\32xl\:focus-within\:bg-bodycolor:focus-within {
@@ -126239,6 +126597,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .\32xl\:focus-within\:bg-bgSelect:focus-within {
+    background-color: transparent;
+  }
+
   .\32xl\:hover\:bg-bodycolor:hover {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -126254,6 +126616,10 @@ video {
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
   }
 
+  .\32xl\:hover\:bg-bgSelect:hover {
+    background-color: transparent;
+  }
+
   .\32xl\:focus\:bg-bodycolor:focus {
     --tw-bg-opacity: 1;
     background-color: rgba(251, 236, 204, var(--tw-bg-opacity));
@@ -126267,6 +126633,10 @@ video {
   .\32xl\:focus\:bg-cartBg:focus {
     --tw-bg-opacity: 1;
     background-color: rgba(231, 76, 60, var(--tw-bg-opacity));
+  }
+
+  .\32xl\:focus\:bg-bgSelect:focus {
+    background-color: transparent;
   }
 
   .\32xl\:bg-none {
@@ -144479,6 +144849,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .\32xl\:text-deletetext {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .\32xl\:text-coloradd {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .group:hover .\32xl\:group-hover\:text-primary {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -144492,6 +144872,16 @@ video {
   .group:hover .\32xl\:group-hover\:text-secondary {
     --tw-text-opacity: 1;
     color: rgba(251, 236, 204, var(--tw-text-opacity));
+  }
+
+  .group:hover .\32xl\:group-hover\:text-deletetext {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .group:hover .\32xl\:group-hover\:text-coloradd {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
   }
 
   .\32xl\:focus-within\:text-primary:focus-within {
@@ -144509,6 +144899,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .\32xl\:focus-within\:text-deletetext:focus-within {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .\32xl\:focus-within\:text-coloradd:focus-within {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .\32xl\:hover\:text-primary:hover {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -144524,6 +144924,16 @@ video {
     color: rgba(251, 236, 204, var(--tw-text-opacity));
   }
 
+  .\32xl\:hover\:text-deletetext:hover {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .\32xl\:hover\:text-coloradd:hover {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
+  }
+
   .\32xl\:focus\:text-primary:focus {
     --tw-text-opacity: 1;
     color: rgba(56, 59, 32, var(--tw-text-opacity));
@@ -144537,6 +144947,16 @@ video {
   .\32xl\:focus\:text-secondary:focus {
     --tw-text-opacity: 1;
     color: rgba(251, 236, 204, var(--tw-text-opacity));
+  }
+
+  .\32xl\:focus\:text-deletetext:focus {
+    --tw-text-opacity: 1;
+    color: rgba(231, 76, 60, var(--tw-text-opacity));
+  }
+
+  .\32xl\:focus\:text-coloradd:focus {
+    --tw-text-opacity: 1;
+    color: rgba(233, 172, 46, var(--tw-text-opacity));
   }
 
   .\32xl\:text-opacity-0 {

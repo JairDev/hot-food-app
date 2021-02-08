@@ -1,9 +1,10 @@
 import Price from "components/Price/Price";
+import SelectOption from "components/SelectOption/SelectOption";
 import React from "react";
 import { connect } from "react-redux";
 import { deleteCartMeal, updateQty } from "../../actions";
 
-const MealCart = ({ onChange, onClick, id, itemMeal }) => {
+const MealCart = ({ onChange, onClick, itemMeal }) => {
   return (
     <div className="content-meal-style w-full h-h30 lg:w-30 style-cart">
       <div className="content-meal flex flex-row justify-between mb-8 relative h-full">
@@ -20,28 +21,15 @@ const MealCart = ({ onChange, onClick, id, itemMeal }) => {
           </div>
           <div className="content-remove-meal mb-2">
             <form action="">
-              <button onClick={onClick} data-id={itemMeal.strMeal}>
+              <button className="textactioncolor" onClick={onClick}>
                 Eliminate
               </button>
             </form>
           </div>
           <div className="content-price-qty flex justify-between w-full relative z-50">
-            <div className="content-qty">
-              <form action="">
-                <select
-                  name=""
-                  id=""
-                  onChange={(e) => onChange(e)}
-                  data-id={id}
-                  value={itemMeal.qty}
-                >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </form>
+            <div className="content-qty flex">
+              <span>Quantity:</span>
+              <SelectOption onChange={(e) => onChange(e)} value={itemMeal.qty} />
             </div>
             <Price children={itemMeal.price * itemMeal.qty} />
           </div>
@@ -50,15 +38,15 @@ const MealCart = ({ onChange, onClick, id, itemMeal }) => {
     </div>
   );
 };
-const mapDispatchToProps = (dispatch, ownProps) => {
-  const { idMeal } = ownProps.itemMeal
+const mapDispatchToProps = (dispatch, { itemMeal }) => {
+  const { idMeal } = itemMeal;
   return {
     onClick: (e) => {
-      const id = e.target.dataset.id;
-      dispatch(deleteCartMeal(id));
+      dispatch(deleteCartMeal(idMeal));
       e.preventDefault();
     },
     onChange: (e) => {
+      console.log(e.target.value)
       dispatch(updateQty(e.target.value, idMeal));
     },
   };

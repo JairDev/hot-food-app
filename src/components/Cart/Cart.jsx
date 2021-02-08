@@ -1,20 +1,28 @@
 import Button from "components/Button/Button";
 import Header from "components/Header/Header";
 import MealsList from "components/MealsList/MealsList";
-import React from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
 
 const classCartButton = "bg-buttoncolor w-full p-4 text-lg font-semibold";
 
 const Cart = ({ cartMeals, subTotal }) => {
+  const refObserver = useRef(null);
   const tax = 10;
 
   if (!cartMeals.length) {
     return (
       <>
         <Header />
-        <div className="text-3xl flex h-screen items-center justify-center relative">
-          Cart is empty...{" "}
+        <div className="content-meals-cart relative z-50 mt-16 p-4">
+          <div className="title-cart">
+            <h2 className="text-primary text-4xl lg:text-6xl font-semibold flex justify-center mb-12">
+              Cart
+            </h2>
+          </div>
+          <div className="text-3xl flex items-center justify-center relative mt-32">
+            ¡Cart is empty!
+          </div>
         </div>
       </>
     );
@@ -24,7 +32,9 @@ const Cart = ({ cartMeals, subTotal }) => {
       <Header />
       <div className="content-meals-cart relative z-50 mt-16 p-4">
         <div className="title-cart">
-          <h2 className="text-primary text-4xl lg:text-6xl font-semibold flex justify-center mb-12">Cart</h2>
+          <h2 className="text-primary text-4xl lg:text-6xl font-semibold flex justify-center mb-12">
+            Cart
+          </h2>
         </div>
         <div className="meals-cart">
           <MealsList
@@ -47,10 +57,13 @@ const Cart = ({ cartMeals, subTotal }) => {
               <span>Total:</span>
               <span className="ml-4">${subTotal + tax}</span>
             </span>
-            <Button children={"ORDER"} className={classCartButton} />
+            <div className="text-secondary">
+              <Button children={"ORDER"} className={classCartButton} />
+            </div>
           </div>
         </div>
       </div>
+      <div className="observer" ref={refObserver}></div>
     </>
   );
 };

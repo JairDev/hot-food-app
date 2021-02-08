@@ -1,7 +1,6 @@
 import FilterableProducts from "components/FilterableProducts/FilterableProducts";
 import Header from "components/Header/Header";
-import React, { useEffect, useRef } from "react";
-import { connect } from "react-redux";
+import React from "react";
 
 const Home = () => {
   return (

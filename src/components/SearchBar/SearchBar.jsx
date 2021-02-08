@@ -23,7 +23,7 @@ const SearchBar = ({ onSubmit }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmit: function (e, input) {
+    onSubmit: (e, input) => {
       dispatch(mealSearch(input.value));
       input = "";
       e.preventDefault();
@@ -32,4 +32,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(null, mapDispatchToProps)(SearchBar);
-

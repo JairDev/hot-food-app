@@ -8,7 +8,6 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const DELETE_MEAL = "DELETE_MEAL";
 export const QUANTITY = "QUANTITY";
 export const UPDATE_QTY = "UPDATE_QTY";
-export const PAGINATION = "PAGINATION";
 
 export function requestMeals() {
   return {
@@ -39,12 +38,6 @@ export const updateQty = makeActionCreator(UPDATE_QTY, "qty", "id");
 export const deleteCartMeal = makeActionCreator(DELETE_MEAL, "id");
 export const filterByPrice = makeActionCreator(FILTER_BY_PRICE, "filter");
 export const mealSearch = makeActionCreator(MEAL_SEARCH, "searchText");
-
-export function nextPage() {
-  return {
-    type: PAGINATION,
-  };
-}
 
 // He aqui nuestro primer creador thunk action!
 // Aunque internamente son diferentes, lo usarás como cualquier otro creador de acción:

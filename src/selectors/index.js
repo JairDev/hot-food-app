@@ -3,6 +3,7 @@ import { createSelector } from "reselect";
 const meals = (state) => state.mealList.sliceMeals;
 const filterByPrice = (state) => state.mealList.visibilityAll;
 const getKeyword = (state) => state.mealList.mealSearchId;
+const mealsAll = (state) => state.mealList.meals;
 
 function filterMeals(array, keyword) {
   return array.filter((meal) => {
@@ -12,7 +13,7 @@ function filterMeals(array, keyword) {
 }
 
 export const getVisibleAllMeals = createSelector(
-  [filterByPrice, meals],
+  [filterByPrice, mealsAll],
   (filterPrice, allMeals) => {
     switch (filterPrice) {
       case "ALL":

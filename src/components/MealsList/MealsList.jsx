@@ -6,9 +6,7 @@ const MealsList = ({ array, id }) => {
   if (id === "mealshome") {
     return array.map((meal) => <Meal key={meal.strMeal} itemMeal={meal} />);
   } else {
-    return array.map((meal) => (
-      <MealCart key={meal.strMeal} id={meal.idMeal} itemMeal={meal} />
-    ));
+    return array.map((meal) => <MealCart key={meal.strMeal} itemMeal={meal} />);
   }
 };
 

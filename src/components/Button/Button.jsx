@@ -3,6 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 const Button = ({ children, className, onClick, id, qty }) => {
+  console.log(className)
   return (
     <div className="content-button">
       <form action="">
@@ -19,12 +20,11 @@ const Button = ({ children, className, onClick, id, qty }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch, { meal }) => {
   return {
     onClick: (e) => {
       e.preventDefault();
-      console.log("props button", ownProps.meal)
-      dispatch(addToCart(ownProps.meal));
+      dispatch(addToCart(meal));
     },
   };
 };
