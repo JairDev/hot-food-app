@@ -1,6 +1,5 @@
 import { createSelector } from "reselect";
 
-const meals = (state) => state.mealList.sliceMeals;
 const filterByPrice = (state) => state.mealList.visibilityAll;
 const getKeyword = (state) => state.mealList.mealSearchId;
 const mealsAll = (state) => state.mealList.meals;

@@ -3,7 +3,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 const Button = ({ children, className, onClick, id, qty }) => {
-  console.log(className)
   return (
     <div className="content-button">
       <form action="">

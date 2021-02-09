@@ -1,8 +1,7 @@
 import "./assets/main.css";
 import "./App.css";
 import Home from "pages/Home/Home";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-// import Cart from "components/Cart/Cart";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React, { Suspense } from "react";
 
 const Cart = React.lazy(() => import("components/Cart/Cart"));

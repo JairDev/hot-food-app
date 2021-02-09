@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Nav = ({ cartMeals }) => {
-  console.log(cartMeals)
+  console.log(cartMeals);
   return (
     <nav className="App-nav text-primary">
       <ul className="flex justify-around">
