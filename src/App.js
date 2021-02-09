@@ -2,7 +2,10 @@ import "./assets/main.css";
 import "./App.css";
 import Home from "pages/Home/Home";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Cart from "components/Cart/Cart";
+// import Cart from "components/Cart/Cart";
+import React, { Suspense } from "react";
+
+const Cart = React.lazy(() => import("components/Cart/Cart"));
 
 function App() {
   return (
@@ -23,10 +26,12 @@ function App() {
         </div>
         <Switch>
           <Route path="/cart">
-            <Cart/>
+            <Suspense fallback={"load ..."}>
+              <Cart />
+            </Suspense>
           </Route>
           <Route path="/">
-            <Home/>
+            <Home />
           </Route>
         </Switch>
       </div>
