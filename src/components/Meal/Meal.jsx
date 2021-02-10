@@ -23,6 +23,8 @@ const Meal = ({ itemMeal, handleChange }) => {
             alt={itemMeal.strMeal}
             data-src={itemMeal.strMealThumb}
             data-observer="observer-image"
+            width="640"
+            height="360"
           />
         </div>
         <div className="content-meal-all flex flex-col justify-between pt-4 pr-4 pb-12 pl-4">
@@ -33,18 +35,21 @@ const Meal = ({ itemMeal, handleChange }) => {
           </div>
           <div className="content-price-qty text-primary mb-4 flex justify-between w-full relative z-50">
             <div className="flex">
-              <span className="">Quantity:</span>
-              <SelectOption onChange={handleChange} value={itemMeal.qty} />
+              <label className="flex">
+                <span className="">Quantity:</span>
+                <SelectOption onChange={handleChange} value={itemMeal.qty} />
+              </label>
             </div>
             <Price children={itemMeal.price} />
           </div>
           <div className="content-add-to-cart w-3/5 p-2 rounded-3xl flex justify-center bg-buttoncolor text-secondary relative z-50 ">
             <Button
-              children={"Add to Cart"}
               className={classMealButton}
               id={itemMeal.strMeal}
               meal={itemMeal}
-            />
+            >
+              Add to Cart
+            </Button>
           </div>
         </div>
       </div>

@@ -1,12 +1,11 @@
-function createNewObj(item, qty) {
+function createNewObj(item) {
   const obj = Object.assign(
     {},
     {
       ...item,
-      
     }
   );
   return obj;
 }
 
-export default createNewObj
+export default createNewObj;

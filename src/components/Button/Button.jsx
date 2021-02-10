@@ -2,14 +2,14 @@ import { addToCart } from "actions";
 import React from "react";
 import { connect } from "react-redux";
 
-const Button = ({ children, className, onClick, id, qty }) => {
+const Button = ({ children, className, onClick, id }) => {
   return (
     <div className="content-button">
       <form action="">
         <button
+          aria-label={children}
           onClick={onClick}
           data-id={id}
-          data-qty={qty}
           className={`${className}`}
         >
           {children}
