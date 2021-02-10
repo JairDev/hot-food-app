@@ -1,8 +1,8 @@
 # Application built with React, Redux and Tailwindcss
 
-###¿Qué he aprendido de Redux?
+### ¿Qué he aprendido de Redux?
 
-#####Redux consists of 3 fundamental elements:
+##### Redux consists of 3 fundamental elements:
 
 Store:
 
