@@ -1,5 +1,7 @@
 # Application built with React, Redux and Tailwindcss
 
+## You can see it live, [here](https://tastypie.netlify.app/).
+
 ### ¿What have I learned from Redux?
 
 ##### Redux consists of 3 fundamental elements:
