@@ -9,6 +9,7 @@ import {
   DELETE_MEAL,
   QUANTITY,
   UPDATE_QTY,
+  ERROR_FETCH,
 } from "../actions";
 import { setLocal } from "utils/localStorage";
 import { setCart } from "utils/setCart";
@@ -33,6 +34,12 @@ function mealList(state = initialState, action) {
         isFetching: false,
         meals: action.payload,
       };
+    case ERROR_FETCH:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload
+      }
     case QUANTITY:
       const meal = state.meals.map((meal) =>
         meal.idMeal === action.id ? { ...meal, qty: action.qty } : meal
