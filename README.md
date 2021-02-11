@@ -64,7 +64,7 @@ function cartMeals(state = [], action) {
 }
 ```
 
-##### ¿How are asynchronous processes handled in Redux?
+### ¿How are asynchronous processes handled in Redux?
 
 Redux by itself is only capable of dispatching synchronous actions, you send an action and the status is updated immediately.
 
