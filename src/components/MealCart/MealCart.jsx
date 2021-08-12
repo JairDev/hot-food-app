@@ -29,9 +29,12 @@ const MealCart = ({ onChange, onClick, itemMeal }) => {
           <div className="content-price-qty flex justify-between w-full relative z-50">
             <div className="content-qty flex">
               <span>Quantity:</span>
-              <SelectOption onChange={(e) => onChange(e)} value={itemMeal.qty} />
+              <SelectOption
+                onChange={(e) => onChange(e)}
+                value={itemMeal.qty}
+              />
             </div>
-            <Price children={itemMeal.price * itemMeal.qty} />
+            <Price>{itemMeal.price * itemMeal.qty}</Price>
           </div>
         </div>
       </div>
@@ -46,7 +49,6 @@ const mapDispatchToProps = (dispatch, { itemMeal }) => {
       e.preventDefault();
     },
     onChange: (e) => {
-      console.log(e.target.value)
       dispatch(updateQty(e.target.value, idMeal));
     },
   };

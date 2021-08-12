@@ -1,12 +1,13 @@
+import { filterByPrice } from "actions";
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Nav = ({ cartMeals }) => {
+const Nav = ({ cartMeals, onClick }) => {
   return (
     <nav className="App-nav text-primary">
       <ul className="flex justify-around">
-        <li>
+        <li onClick={onClick}>
           <Link to="/">Home</Link>
         </li>
         <li>
@@ -30,9 +31,17 @@ const Nav = ({ cartMeals }) => {
   );
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClick: () => {
+      dispatch(filterByPrice("ALL"));
+    }
+  }
+}
+
 const mapStateToProps = (state) => {
   const { cartMeals } = state;
   return { cartMeals };
 };
 
-export default connect(mapStateToProps, null)(Nav);
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

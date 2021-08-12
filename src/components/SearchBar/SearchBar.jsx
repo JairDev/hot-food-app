@@ -29,6 +29,7 @@ const SearchBar = ({ onSubmit }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSubmit: (e, input) => {
+      // console.log(e, input)
       dispatch(mealSearch(input.value));
       input = "";
       e.preventDefault();

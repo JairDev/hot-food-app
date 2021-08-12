@@ -5,7 +5,7 @@ import SearchBar from "components/SearchBar/SearchBar";
 import { useNearScreen } from "hooks/useNearScreen/useNearScreen";
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
-import { getVisibleByKeyword } from "selectors";
+import { getVisibleAllMeals, getVisibleByKeyword } from "selectors";
 
 const filterProps = [
   { action: "ALL", label: "ALL" },
@@ -51,7 +51,7 @@ const FilterableProducts = ({ callApi, meals }) => {
             );
           })}
         </div>
-        <div className="content-meals-menu flex lg:flex-1 flex-wrap flex-col items-center md:flex-row justify-between mt-16">
+        <div className="content-meals-menu flex lg:flex-1 flex-wrap flex-col items-stretch md:flex-row justify-between mt-16">
           <MealsList array={meals} id={"mealshome"} />
         </div>
       </section>

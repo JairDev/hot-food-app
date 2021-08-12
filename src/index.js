@@ -16,7 +16,7 @@ const store = createStore(
   composeEnhancers(
     applyMiddleware(
       thunkMiddleware, //Nos permite despachar funciones
-      logger //Middleware que registra las acciones
+      // logger //Middleware que registra las acciones
     )
   )
 );

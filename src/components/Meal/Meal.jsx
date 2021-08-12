@@ -10,7 +10,7 @@ const classMealButton =
   "button-add relative text-base font-semibold hover-target relative";
 
 const Meal = ({ itemMeal, handleChange }) => {
-  const { ref } = useNearScreen("200px");
+  const { ref } = useNearScreen("0px 0px 400px 0px");
 
   return (
     <div className="content-meal-style w-w80 md:w-w45 lg:w-w30 mb-6 hover-trigger">
@@ -40,7 +40,7 @@ const Meal = ({ itemMeal, handleChange }) => {
                 <SelectOption onChange={handleChange} value={itemMeal.qty} />
               </label>
             </div>
-            <Price children={itemMeal.price} />
+            <Price children={itemMeal.price * itemMeal.qty} />
           </div>
           <div className="content-add-to-cart w-3/5 p-2 rounded-3xl flex justify-center bg-buttoncolor text-secondary relative z-50 ">
             <Button

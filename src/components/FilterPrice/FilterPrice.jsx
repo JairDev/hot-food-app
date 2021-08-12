@@ -9,10 +9,10 @@ const FilterPrice = ({ onClick, children, forwardRef, tag }) => {
         <div className="meals-price">
           <label htmlFor={tag}>
             <input
+              id={tag}
               ref={forwardRef}
               onClick={onClick}
               type="checkbox"
-              id={tag}
             />
             <span className="span-80-150 ml-4 text-base cursor-pointer">
               {children}
@@ -34,11 +34,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           item.style = "pointer-events: auto";
           item.nextSibling.style = "pointer-events: auto";
           item.checked = false;
+          item.disabled = "";
         }
       });
       e.target.nextSibling.style =
         "text-decoration: line-through; color: grey;";
       e.target.style = "pointer-events: none";
+      e.target.disabled = "disabled";
     },
   };
 };
