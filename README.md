@@ -1,18 +1,18 @@
-# Application built with React, Redux and Tailwindcss
+# Aplicación construída con React, Redux y Tailwindcss
 
-## You can see it live, [here](https://tastypie.netlify.app/).
+## Puedes verlo en vivo, [aquí](https://tastypie.netlify.app/).
 
-### ¿What have I learned from Redux?
+### ¿Que he aprendido de Redux?
 
-##### Redux consists of 3 fundamental elements:
+##### Redux consiste de 3 elementos fundamentales:
+Tienda:
 
-Store:
-
-The entire state of an application in redux lives in one place, the store
+El estado completo de una aplicación en redux vive in un solo lugar, la tienda.
 
 ` initialState => { ... }`
 
 The initial state of this application.
+El estado inicial de esta aplicación.
 
 ```
 {
@@ -26,14 +26,14 @@ The initial state of this application.
 };
 ```
 
-Actions:
+Acciones:
 
-The only way to update the store is by issuing shares.
-They are functions that return a flat javascript object, with the type of action and usually a payload to obtain some data.
+La única manera de actualizar la tienda es emitiendo acciones.
+Son funciones que devuelven un objeto javascript plano, con el tipo de acción y normalmente un payload para obtener algunos datos.
 
 `action () => { type: "", payload: "", ... }`
 
-Action creator to add a dessert to the shopping cart.
+Creador de acción para agregar un postre al carrito de compras
 
 ```
 function add(dessert) {
@@ -43,14 +43,13 @@ function add(dessert) {
   };
 }      
 ```
+Reductores:
 
-Reducers:
-
-The communication between the store and the actions, is through the reducers, they are pure functions that take as arguments, the previous state and the action and then return the new state, consequently they should not modify the previous state, but return a new one object with the new state
+La comunicación entre la tienda y las acciones, es a través de los reductores, son funciones puras que toman como argumentos, el estado anterior y la acción y luego devuelven el nuevo estado, en consecuencia no deben modificar el estado anterior, sino devolver un nuevo objeto con el nuevo estado.
 
 `reducer (previousState, action) => newState `
 
-Reducer that manages the status of the shopping cart
+Reductor que gestiona el estado del carrito de la compra.
 
 ```
 function cartMeals(state = [], action) {
@@ -64,25 +63,25 @@ function cartMeals(state = [], action) {
 }
 ```
 
-### ¿How are asynchronous processes handled in Redux?
+### ¿Como se manejan los procesos asíncronos en Redux?
 
-Redux by itself is only capable of dispatching synchronous actions, you send an action and the status is updated immediately.
+Redux por sí solo es capaz de enviar acciones síncronas, usted envía una acción y el estado se actualiza inmediatamente.
 
-Currently most applications or websites require external data, for example API calls to request data and display it on our website.
+Actualmente, la mayoría de las aplicaciones o sitios web requieren datos externos, por ejemplo, llamadas a API para solicitar datos y mostrarlos en nuestro sitio web.
 
-These API calls are made asynchronously, when this process (request) is made, there are two determining moments in the execution. The moment the call is started and the moment you receive a response, as we know this response in an asynchronous request is indeterminate (timeout).
+Estas llamadas a la API se realizan de forma asincrónica, cuando se realiza este proceso (solicitud), hay dos momentos determinantes en la ejecución. El momento en que se inicia la llamada y el momento en que recibe una respuesta, como sabemos, esta respuesta en una solicitud asincrónica es indeterminada (tiempo de espera).
 
-These moments require a state change in the application. We need to send normal (synchronous) actions to the reducers to inform them that it is happening.
+Estos momentos requieren un cambio de estado en la aplicación. Necesitamos enviar acciones normales (sincrónicas) a los reductores para informarles de que está sucediendo.
 
-- An action informing the reducers that the request started
+- Una acción que informa a los reductores que comenzó la solicitud.
 
-- An action informing the reducers that the request ended correctly
+- Una acción que informa a los reductores que la solicitud finalizó correctamente.
 
-- An action that informing the reducers that the request failed
+- Una acción que informa a los reductores que la solicitud falló
 
-To handle network requests with asynchronous actions, we need a middleware, in this case I am using "Middleware Redux Thunk" as standard.
+Para manejar solicitudes de red con acciones asincrónicas, necesitamos un middleware, en este caso estoy usando "Middleware Redux Thunk" como estándar.
 
-Using this middleware, an action creator can return a function in place of an action object. This returned function will be executed by the middleware, as it does not need to be pure, we can have side effects such as asynchronous API calls, as well as send synchronous actions.
+Con este middleware, un creador de acciones puede devolver una función en lugar de un objeto de acción. Esta función devuelta será ejecutada por el middleware, ya que no necesita ser pura, podemos tener efectos secundarios como llamadas a API asíncronas, así como enviar acciones síncronas.
 
 ## Available Scripts
 
