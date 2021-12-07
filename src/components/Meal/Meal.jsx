@@ -27,13 +27,13 @@ const Meal = ({ itemMeal, handleChange }) => {
             height="360"
           />
         </div>
-        <div className="content-meal-all flex flex-col justify-between pt-4 pr-4 pb-12 pl-4">
+        <div className="content-meal-all flex flex-col justify-between pt- pr-4 pb-12 pl-4">
           <div className="meal-description mb-4 relative z-40">
             <h3 className="text-lg font-semibold text-primary">
               {itemMeal.strMeal}
             </h3>
           </div>
-          <div className="content-price-qty text-primary mb-4 flex justify-between w-full relative z-50">
+          <div className="content-price-qtytext-primary mb-4 flex justify-between w-full relative z-50">
             <div className="flex">
               <label className="flex">
                 <span className="">Quantity:</span>

@@ -51,7 +51,7 @@ const FilterableProducts = ({ callApi, meals }) => {
             );
           })}
         </div>
-        <div className="content-meals-menu flex lg:flex-1 flex-wrap flex-col items-stretch md:flex-row justify-between mt-16">
+        <div className="content-meals-menu flex lg:flex-1 flex-wrap flex-col items-center md:flex-row justify-between mt-16">
           <MealsList array={meals} id={"mealshome"} />
         </div>
       </section>
